@@ -1,3 +1,30 @@
+// --- Cache Busting / Auto Update Version Check ---
+(function() {
+    const versionKey = 'bayan_site_version';
+    const checkVersion = async () => {
+        try {
+            const response = await fetch(`version.json?t=${Date.now()}`);
+            if (response.ok) {
+                const data = await response.json();
+                const latestVersion = data.version;
+                const currentVersion = localStorage.getItem(versionKey);
+
+                if (latestVersion && latestVersion !== currentVersion) {
+                    localStorage.setItem(versionKey, latestVersion);
+                    window.location.reload(true);
+                }
+            }
+        } catch (error) {
+            console.error('Error checking site version:', error);
+        }
+    };
+    if (document.readyState === 'complete') {
+        checkVersion();
+    } else {
+        window.addEventListener('load', checkVersion);
+    }
+})();
+
 // Mobile Menu Toggle
 const mobileBtn = document.querySelector('.mobile-menu-btn');
 const navLinks = document.querySelector('.nav-links');
@@ -85,3 +112,67 @@ if(modal && modalImg && closeBtn) {
         }
     });
 }
+
+// --- نظام التسجيل قبل التحميل (Registration Modal Logic) ---
+const downloadModal = document.getElementById("downloadModal");
+const closeDownloadBtn = document.querySelector(".close-download-modal");
+const downloadButtons = document.querySelectorAll(".download-btn");
+const registrationForm = document.getElementById("registrationForm");
+let targetDownloadUrl = "";
+
+if (downloadModal && closeDownloadBtn) {
+    // اعتراض ضغطة زر التحميل لعرض النموذج أولاً
+    downloadButtons.forEach(btn => {
+        btn.addEventListener("click", (e) => {
+            e.preventDefault(); // منع التحميل المباشر المؤقت
+            targetDownloadUrl = btn.getAttribute("href");
+            downloadModal.style.display = "flex"; // عرض النافذة
+        });
+    });
+
+    // إغلاق النافذة
+    closeDownloadBtn.addEventListener("click", () => {
+        downloadModal.style.display = "none";
+    });
+
+    window.addEventListener("click", (e) => {
+        if (e.target === downloadModal) {
+            downloadModal.style.display = "none";
+        }
+    });
+}
+
+// معالجة إرسال النموذج والتحميل
+window.handleRegistrationSubmit = function(event) {
+    event.preventDefault();
+    
+    const name = document.getElementById("regName").value;
+    const phone = document.getElementById("regPhone").value;
+    const businessType = document.getElementById("regBusinessType").value;
+
+    const leadData = {
+        name,
+        phone,
+        businessType,
+        timestamp: new Date().toISOString()
+    };
+
+    console.log("📝 تم تسجيل عميل جديد:", leadData);
+
+    // 1. حفظ البيانات محلياً في المتصفح كنسخة احتياطية آمنة
+    const existingLeads = JSON.parse(localStorage.getItem("bayan_web_leads") || "[]");
+    existingLeads.push(leadData);
+    localStorage.setItem("bayan_web_leads", JSON.stringify(existingLeads));
+
+    // 2. إغلاق نافذة التسجيل وإعادة تهيئة النموذج
+    downloadModal.style.display = "none";
+    registrationForm.reset();
+
+    // 3. فتح رابط التحميل المباشر في علامة تبويب جديدة لبدء التنزيل فوراً
+    if (targetDownloadUrl) {
+        window.open(targetDownloadUrl, "_blank");
+    }
+
+    // 4. عرض رسالة شكر وتوجيه للمستخدم
+    alert("✅ شكراً لك! تم تسجيل بياناتك بنجاح، وسيبدأ تحميل برنامج بيان الآن تلقائياً... 🚀");
+};

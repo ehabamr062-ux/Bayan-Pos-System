@@ -384,7 +384,7 @@
                     <li><a href="#features">المميزات</a></li>
                     <li><a href="#pricing">الأسعار</a></li>
                     <li><a href="#download">تحميل البرنامج</a></li>
-                    <li><a href="#">سياسة الخصوصية</a></li>
+                    <li><a href="privacy.html">سياسة الخصوصية</a></li>
                 </ul>
             </div>
             <div class="footer-contact">
@@ -413,6 +413,42 @@
     <div id="imageModal" class="image-modal">
         <span class="close-modal">&times;</span>
         <img class="modal-content" id="expandedImg">
+    </div>
+
+    <!-- نافذة التسجيل قبل التحميل (Registration Modal) -->
+    <div id="downloadModal" class="download-modal-overlay">
+        <div class="download-modal-card">
+            <div class="download-modal-header">
+                <h3>👤 تسجيل بيانات التحميل</h3>
+                <span class="close-download-modal">&times;</span>
+            </div>
+            <form id="registrationForm" onsubmit="handleRegistrationSubmit(event)">
+                <div class="form-group">
+                    <label for="regName">الاسم بالكامل 👤</label>
+                    <input type="text" id="regName" required placeholder="أدخل اسمك الثنائي أو الثلاثي">
+                </div>
+                <div class="form-group">
+                    <label for="regPhone">رقم الهاتف / الواتساب 📱</label>
+                    <input type="tel" id="regPhone" required placeholder="مثال: 01006825905">
+                </div>
+                <div class="form-group">
+                    <label for="regBusinessType">نوع النشاط التجاري 🛒</label>
+                    <select id="regBusinessType" required>
+                        <option value="" disabled selected>اختر نوع نشاطك</option>
+                        <option value="سوبر ماركت">سوبر ماركت / بقالة</option>
+                        <option value="محل ملابس">محل ملابس / أحذية</option>
+                        <option value="مطعم / كافيه">مطعم / كافيه</option>
+                        <option value="صيدلية">صيدلية</option>
+                        <option value="محل أجهزة / إلكترونيات">محل أجهزة / إلكترونيات</option>
+                        <option value="محل أدوات منزلية">محل أدوات منزلية</option>
+                        <option value="أخرى">نشاط تجاري آخر</option>
+                    </select>
+                </div>
+                <button type="submit" class="submit-download-btn">
+                    إرسال وتحميل البرنامج 🚀
+                </button>
+            </form>
+        </div>
     </div>
 
     <script src="script.js"></script>
