@@ -1,3 +1,43 @@
+// --- Theme Toggle Logic (Light / Luxury Dark) ---
+(function() {
+    const themeKey = 'bayan_site_theme';
+    const savedTheme = localStorage.getItem(themeKey);
+    if (savedTheme === 'light') {
+        document.body.classList.add('light-mode');
+    }
+})();
+
+document.addEventListener('DOMContentLoaded', () => {
+    const themeToggleBtn = document.getElementById('themeToggle');
+    const themeKey = 'bayan_site_theme';
+    
+    if (themeToggleBtn) {
+        const themeIcon = themeToggleBtn.querySelector('i');
+        
+        const updateIcon = () => {
+            if (document.body.classList.contains('light-mode')) {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            } else {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+            }
+        };
+
+        updateIcon();
+
+        themeToggleBtn.addEventListener('click', () => {
+            document.body.classList.toggle('light-mode');
+            if (document.body.classList.contains('light-mode')) {
+                localStorage.setItem(themeKey, 'light');
+            } else {
+                localStorage.setItem(themeKey, 'dark');
+            }
+            updateIcon();
+        });
+    }
+});
+
 // --- Cache Busting / Auto Update Version Check ---
 (function() {
     const versionKey = 'bayan_site_version';
@@ -80,12 +120,12 @@ document.querySelectorAll('.faq-question').forEach(question => {
 // Navbar background blur on scroll
 window.addEventListener('scroll', () => {
     const navbar = document.querySelector('.navbar');
-    if (window.scrollY > 50) {
-        navbar.style.background = 'rgba(15, 23, 42, 0.98)';
-        navbar.style.boxShadow = '0 4px 20px rgba(0,0,0,0.3)';
-    } else {
-        navbar.style.background = 'rgba(15, 23, 42, 0.95)';
-        navbar.style.boxShadow = 'none';
+    if (navbar) {
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
     }
 });
 
