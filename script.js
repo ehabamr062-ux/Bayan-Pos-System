@@ -216,3 +216,43 @@ window.handleRegistrationSubmit = function(event) {
     // 4. عرض رسالة شكر وتوجيه للمستخدم
     alert("✅ شكراً لك! تم تسجيل بياناتك بنجاح، وسيبدأ تحميل برنامج بيان الآن تلقائياً... 🚀");
 };
+
+// --- Preloader & Scroll Reveal Animations ---
+document.addEventListener("DOMContentLoaded", () => {
+    // 1. Preloader logic
+    const preloader = document.getElementById('preloader');
+    if (preloader) {
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                preloader.style.opacity = '0';
+                preloader.style.visibility = 'hidden';
+            }, 600); // Slight delay for smooth logo pulse effect
+        });
+    }
+
+    // 2. Add 'reveal-up' class to all main sections dynamically
+    const elementsToReveal = document.querySelectorAll('.feature-card, .price-card, .screen-card, .faq-item, .section-title, .timeline-item, .hero-content, .cta-content');
+    elementsToReveal.forEach(el => {
+        el.classList.add('reveal-up');
+    });
+
+    // 3. IntersectionObserver logic
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.15
+    };
+    
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target); // Animate only once
+            }
+        });
+    }, observerOptions);
+
+    elementsToReveal.forEach(el => {
+        revealObserver.observe(el);
+    });
+});
