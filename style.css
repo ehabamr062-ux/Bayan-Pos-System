@@ -745,6 +745,59 @@ footer {
 }
 .footer-bottom strong { color: var(--accent-color); }
 
+/* Download Selection */
+.download-selection {
+    text-align: center;
+    padding: 20px 0;
+}
+.download-selection h4 {
+    color: #22c55e;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+.download-selection p {
+    color: var(--text-gray);
+    margin-bottom: 25px;
+}
+.platform-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.platform-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    padding: 15px 20px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--white);
+    transition: var(--transition);
+}
+.platform-btn.windows-btn {
+    background: #0078D7;
+}
+.platform-btn.windows-btn:hover {
+    background: #005a9e;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 120, 215, 0.3);
+}
+.platform-btn.android-btn {
+    background: #3DDC84;
+    color: #0f172a;
+}
+.platform-btn.android-btn:hover {
+    background: #2ebd6a;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(61, 220, 132, 0.3);
+}
+.platform-btn i {
+    font-size: 1.8rem;
+}
+
 /* Preloader */
 .preloader {
     position: fixed;

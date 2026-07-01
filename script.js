@@ -158,14 +158,24 @@ const downloadModal = document.getElementById("downloadModal");
 const closeDownloadBtn = document.querySelector(".close-download-modal");
 const downloadButtons = document.querySelectorAll(".download-btn");
 const registrationForm = document.getElementById("registrationForm");
-let targetDownloadUrl = "";
+const downloadSelection = document.getElementById("downloadSelection");
+
+function resetDownloadModal() {
+    if(registrationForm) {
+        registrationForm.reset();
+        registrationForm.style.display = "block";
+    }
+    if(downloadSelection) {
+        downloadSelection.style.display = "none";
+    }
+}
 
 if (downloadModal && closeDownloadBtn) {
     // اعتراض ضغطة زر التحميل لعرض النموذج أولاً
     downloadButtons.forEach(btn => {
         btn.addEventListener("click", (e) => {
             e.preventDefault(); // منع التحميل المباشر المؤقت
-            targetDownloadUrl = btn.getAttribute("href");
+            resetDownloadModal(); // إعادة تهيئة النافذة
             downloadModal.style.display = "flex"; // عرض النافذة
         });
     });
@@ -187,8 +197,14 @@ window.handleRegistrationSubmit = function(event) {
     event.preventDefault();
     
     const name = document.getElementById("regName").value;
-    const phone = document.getElementById("regPhone").value;
+    const phone = document.getElementById("regPhone").value.trim();
     const businessType = document.getElementById("regBusinessType").value;
+
+    const phoneRegex = /^[0-9]{11}$/;
+    if (!phoneRegex.test(phone)) {
+        alert("⚠️ يرجى إدخال رقم هاتف صحيح مكون من 11 رقماً فقط.");
+        return;
+    }
 
     const leadData = {
         name,
@@ -204,17 +220,29 @@ window.handleRegistrationSubmit = function(event) {
     existingLeads.push(leadData);
     localStorage.setItem("bayan_web_leads", JSON.stringify(existingLeads));
 
-    // 2. إغلاق نافذة التسجيل وإعادة تهيئة النموذج
-    downloadModal.style.display = "none";
-    registrationForm.reset();
+    // // === كود الإرسال لقاعدة البيانات المستقبلية (Firebase / API) ===
+    // fetch("https://your-api-endpoint.com/api/leads", {
+    //     method: "POST",
+    //     headers: { "Content-Type": "application/json" },
+    //     body: JSON.stringify(leadData)
+    // }).catch(err => console.error("Error saving lead:", err));
 
-    // 3. فتح رابط التحميل المباشر في علامة تبويب جديدة لبدء التنزيل فوراً
-    if (targetDownloadUrl) {
-        window.open(targetDownloadUrl, "_blank");
+    // 2. إخفاء نموذج التسجيل وإظهار شاشة الاختيار
+    registrationForm.style.display = "none";
+    downloadSelection.style.display = "block";
+};
+
+// بدء التحميل حسب المنصة
+window.startDownload = function(event, platform) {
+    event.preventDefault();
+    if (platform === 'windows') {
+        alert("💻 جاري تحضير نسخة الويندوز للتحميل...");
+        // window.open("رابط نسخة الويندوز هنا", "_blank");
+    } else if (platform === 'android') {
+        alert("📱 جاري تحضير نسخة الأندرويد للتحميل...");
+        // window.open("رابط نسخة الأندرويد هنا", "_blank");
     }
-
-    // 4. عرض رسالة شكر وتوجيه للمستخدم
-    alert("✅ شكراً لك! تم تسجيل بياناتك بنجاح، وسيبدأ تحميل برنامج بيان الآن تلقائياً... 🚀");
+    downloadModal.style.display = "none";
 };
 
 // --- Preloader & Scroll Reveal Animations ---

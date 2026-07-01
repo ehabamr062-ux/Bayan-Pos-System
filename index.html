@@ -507,7 +507,7 @@
                 </div>
                 <div class="form-group">
                     <label for="regPhone">رقم الهاتف / الواتساب 📱</label>
-                    <input type="tel" id="regPhone" required placeholder="مثال: 01006825905">
+                    <input type="tel" id="regPhone" required pattern="[0-9]{11}" minlength="11" maxlength="11" title="يجب أن يتكون رقم الهاتف من 11 رقماً فقط" placeholder="مثال: 01006825905">
                 </div>
                 <div class="form-group">
                     <label for="regBusinessType">نوع النشاط التجاري 🛒</label>
@@ -523,9 +523,25 @@
                     </select>
                 </div>
                 <button type="submit" class="submit-download-btn">
-                    إرسال وتحميل البرنامج 🚀
+                    إرسال البيانات واستمرار 🚀
                 </button>
             </form>
+
+            <!-- شاشة اختيار النسخة (تظهر بعد نجاح التسجيل) -->
+            <div id="downloadSelection" class="download-selection" style="display: none;">
+                <h4>✅ تم تسجيل بياناتك بنجاح!</h4>
+                <p>اختر النسخة التي تود تحميلها الآن لتناسب جهازك:</p>
+                <div class="platform-buttons">
+                    <a href="#" class="platform-btn windows-btn" onclick="startDownload(event, 'windows')">
+                        <i class="fa-brands fa-windows"></i>
+                        <span>نسخة الويندوز (PC)</span>
+                    </a>
+                    <a href="#" class="platform-btn android-btn" onclick="startDownload(event, 'android')">
+                        <i class="fa-brands fa-android"></i>
+                        <span>نسخة الأندرويد (Mobile)</span>
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 
