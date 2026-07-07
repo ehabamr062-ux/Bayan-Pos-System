@@ -220,16 +220,44 @@ window.handleRegistrationSubmit = function(event) {
     existingLeads.push(leadData);
     localStorage.setItem("bayan_web_leads", JSON.stringify(existingLeads));
 
-    // // === كود الإرسال لقاعدة البيانات المستقبلية (Firebase / API) ===
-    // fetch("https://your-api-endpoint.com/api/leads", {
-    //     method: "POST",
-    //     headers: { "Content-Type": "application/json" },
-    //     body: JSON.stringify(leadData)
-    // }).catch(err => console.error("Error saving lead:", err));
+    // 2. إرسال البيانات إلى Google Sheets عبر Apps Script
+    const submitBtn = event.target.querySelector('.submit-download-btn');
+    const originalBtnText = submitBtn ? submitBtn.innerHTML : '';
+    if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = 'جاري إرسال البيانات... ⏳';
+    }
 
-    // 2. إخفاء نموذج التسجيل وإظهار شاشة الاختيار
-    registrationForm.style.display = "none";
-    downloadSelection.style.display = "block";
+    const formData = new URLSearchParams();
+    formData.append("name", name);
+    formData.append("phone", phone);
+    formData.append("businessType", businessType);
+
+    fetch("https://script.google.com/macros/s/AKfycbx9Gbq-gQWGWOeM7wvMS1oQ9fJNJgai0aUpByE14-83mPV3VVvoXaqygB_qZmmUtWNt/exec", {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body: formData.toString()
+    })
+    .then(() => {
+        console.log("Data sent to Google Sheets successfully");
+        registrationForm.style.display = "none";
+        downloadSelection.style.display = "block";
+    })
+    .catch(err => {
+        console.error("Error sending to Google Sheets:", err);
+        // الاستمرار في التحميل حتى لو فشل الاتصال كخيار احتياطي لضمان تجربة مستخدم سلسة
+        registrationForm.style.display = "none";
+        downloadSelection.style.display = "block";
+    })
+    .finally(() => {
+        if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalBtnText;
+        }
+    });
 };
 
 // بدء التحميل حسب المنصة
@@ -237,10 +265,9 @@ window.startDownload = function(event, platform) {
     event.preventDefault();
     if (platform === 'windows') {
         alert("💻 جاري تحضير نسخة الويندوز للتحميل...");
-        // window.open("رابط نسخة الويندوز هنا", "_blank");
+        window.open("https://drive.google.com/file/d/1kJnV_dpt5BYuDgADPwvui6JLo2bsCKL2/view?usp=sharing", "_blank");
     } else if (platform === 'android') {
-        alert("📱 جاري تحضير نسخة الأندرويد للتحميل...");
-        // window.open("رابط نسخة الأندرويد هنا", "_blank");
+        alert("📱 نسخة الأندرويد ستتوفر قريباً! يمكنك تحميل نسخة الويندوز حالياً.");
     }
     downloadModal.style.display = "none";
 };
