@@ -266,7 +266,7 @@ window.startDownload = function(event, platform) {
     event.preventDefault();
     if (platform === 'windows') {
         alert("💻 جاري تحضير نسخة الويندوز للتحميل...");
-        window.open("https://drive.google.com/file/d/1kJnV_dpt5BYuDgADPwvui6JLo2bsCKL2/view?usp=sharing", "_blank");
+        window.open("https://github.com/ehabamr062-ux/Bayan-Pos-System/releases/download/v2.5.0/Bayan_POS-win32-x64.zip", "_blank");
     } else if (platform === 'android') {
         alert("📱 نسخة الأندرويد ستتوفر قريباً! يمكنك تحميل نسخة الويندوز حالياً.");
     }
