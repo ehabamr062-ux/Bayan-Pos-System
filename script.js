@@ -228,18 +228,19 @@ window.handleRegistrationSubmit = function(event) {
         submitBtn.innerHTML = 'جاري إرسال البيانات... ⏳';
     }
 
-    const formData = new URLSearchParams();
-    formData.append("name", name);
-    formData.append("phone", phone);
-    formData.append("businessType", businessType);
+        const payload = {
+        name: name,
+        phone: phone,
+        activity: businessType
+    };
 
     fetch("https://script.google.com/macros/s/AKfycbx9Gbq-gQWGWOeM7wvMS1oQ9fJNJgai0aUpByE14-83mPV3VVvoXaqygB_qZmmUtWNt/exec", {
         method: "POST",
         mode: "no-cors",
         headers: {
-            "Content-Type": "application/x-www-form-urlencoded"
+            "Content-Type": "text/plain"
         },
-        body: formData.toString()
+        body: JSON.stringify(payload)
     })
     .then(() => {
         console.log("Data sent to Google Sheets successfully");
