@@ -168,6 +168,10 @@ function resetDownloadModal() {
     if(downloadSelection) {
         downloadSelection.style.display = "none";
     }
+    const androidWarning = document.getElementById("androidWarning");
+    if(androidWarning) {
+        androidWarning.style.display = "none";
+    }
 }
 
 if (downloadModal && closeDownloadBtn) {
@@ -175,8 +179,22 @@ if (downloadModal && closeDownloadBtn) {
     downloadButtons.forEach(btn => {
         btn.addEventListener("click", (e) => {
             e.preventDefault(); // منع التحميل المباشر المؤقت
+            const platform = btn.getAttribute("data-platform");
+            window.currentSelectedPlatform = platform;
+            
             resetDownloadModal(); // إعادة تهيئة النافذة
             downloadModal.style.display = "flex"; // عرض النافذة
+            
+            // فحص إذا كان المستخدم مسجل مسبقاً على هذا المتصفح لتجنب التكرار
+            const existingLeads = JSON.parse(localStorage.getItem("bayan_web_leads") || "[]");
+            if (existingLeads.length > 0) {
+                if(registrationForm) registrationForm.style.display = "none";
+                if(platform) {
+                    startDownload({preventDefault:()=>{}}, platform);
+                } else {
+                    if(downloadSelection) downloadSelection.style.display = "block";
+                }
+            }
         });
     });
 
@@ -245,13 +263,21 @@ window.handleRegistrationSubmit = function(event) {
     .then(() => {
         console.log("Data sent to Google Sheets successfully");
         registrationForm.style.display = "none";
-        downloadSelection.style.display = "block";
+        if (window.currentSelectedPlatform) {
+            startDownload({preventDefault:()=>{}}, window.currentSelectedPlatform);
+        } else {
+            downloadSelection.style.display = "block";
+        }
     })
     .catch(err => {
         console.error("Error sending to Google Sheets:", err);
         // الاستمرار في التحميل حتى لو فشل الاتصال كخيار احتياطي لضمان تجربة مستخدم سلسة
         registrationForm.style.display = "none";
-        downloadSelection.style.display = "block";
+        if (window.currentSelectedPlatform) {
+            startDownload({preventDefault:()=>{}}, window.currentSelectedPlatform);
+        } else {
+            downloadSelection.style.display = "block";
+        }
     })
     .finally(() => {
         if (submitBtn) {
@@ -266,11 +292,16 @@ window.startDownload = function(event, platform) {
     event.preventDefault();
     if (platform === 'windows') {
         alert("💻 جاري تحضير نسخة الويندوز للتحميل...");
-        window.open("https://github.com/ehabamr062-ux/Bayan-Pos-System/releases/download/v2.5.0/Bayan_POS-win32-x64.zip", "_blank");
+        window.open("https://github.com/ehabamr062-ux/Bayan-Pos-System/releases/download/v1.0.0/Bayan.POS.Setup.1.0.0.exe", "_blank");
+        downloadModal.style.display = "none";
     } else if (platform === 'android') {
-        alert("📱 نسخة الأندرويد ستتوفر قريباً! يمكنك تحميل نسخة الويندوز حالياً.");
+        const downloadSelection = document.getElementById("downloadSelection");
+        const androidWarning = document.getElementById("androidWarning");
+        if(downloadSelection && androidWarning) {
+            downloadSelection.style.display = "none";
+            androidWarning.style.display = "block";
+        }
     }
-    downloadModal.style.display = "none";
 };
 
 // --- Preloader & Scroll Reveal Animations ---
