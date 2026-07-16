@@ -291,10 +291,24 @@ window.handleRegistrationSubmit = function(event) {
 window.startDownload = function(event, platform) {
     event.preventDefault();
     if (platform === 'windows') {
+        // Google Analytics: تسجيل حدث تحميل الويندوز
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'download_windows', {
+                'event_category': 'Download',
+                'event_label': 'Windows EXE v1.0.0'
+            });
+        }
         alert("💻 جاري تحضير نسخة الويندوز للتحميل...");
         window.open("https://github.com/ehabamr062-ux/Bayan-Pos-System/releases/download/v1.0.0/Bayan.POS.Setup.1.0.0.exe", "_blank");
         downloadModal.style.display = "none";
     } else if (platform === 'android') {
+        // Google Analytics: تسجيل حدث تحميل الأندرويد
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'download_android', {
+                'event_category': 'Download',
+                'event_label': 'Android Web App'
+            });
+        }
         const downloadSelection = document.getElementById("downloadSelection");
         const androidWarning = document.getElementById("androidWarning");
         if(downloadSelection && androidWarning) {
@@ -343,3 +357,89 @@ document.addEventListener("DOMContentLoaded", () => {
         revealObserver.observe(el);
     });
 });
+
+// --- Reviews Section Logic ---
+document.addEventListener("DOMContentLoaded", () => {
+    const reviewsContainer = document.getElementById('reviewsContainer');
+    if (!reviewsContainer) return;
+
+    // الرابط اللي هيجيب منه الآراء (هيتم تغييره برابط Google Apps Script أو السيرفر الخاص بك)
+    const REVIEWS_API_URL = "YOUR_SERVER_API_URL_HERE"; 
+
+    function renderReviews(reviews) {
+        reviewsContainer.innerHTML = ''; // تفريغ رسالة التحميل
+        
+        if (!reviews || reviews.length === 0) {
+            reviewsContainer.innerHTML = `
+                <div style="text-align: center; grid-column: 1 / -1; color: var(--text-gray); padding: 40px;">
+                    <p>لا توجد آراء مسجلة حالياً. سيتم إضافتها قريباً.</p>
+                </div>
+            `;
+            return;
+        }
+
+        reviews.forEach(review => {
+            const initial = review.name.charAt(0);
+            const stars = Array(5).fill(0).map((_, i) => 
+                `<i class="fa-solid fa-star" style="color: ${i < review.rating ? '#fbbf24' : '#475569'}"></i>`
+            ).join('');
+
+            const card = document.createElement('div');
+            card.className = 'review-card reveal-up';
+            card.innerHTML = `
+                <div class="review-header">
+                    <div class="reviewer-avatar">${initial}</div>
+                    <div class="reviewer-info">
+                        <h4>${review.name}</h4>
+                        <div style="font-size: 0.85rem; color: var(--accent-color); margin-bottom: 5px;">${review.business}</div>
+                        <div class="rating">${stars}</div>
+                    </div>
+                </div>
+                <div class="review-text">${review.comment}</div>
+            `;
+            reviewsContainer.appendChild(card);
+        });
+
+        // Trigger intersection observer for new elements
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.review-card').forEach(el => observer.observe(el));
+    }
+
+    // محاولة جلب البيانات من السيرفر
+    fetch(REVIEWS_API_URL)
+        .then(response => {
+            if(!response.ok) throw new Error("API not ready");
+            return response.json();
+        })
+        .then(data => {
+            renderReviews(data);
+        })
+        .catch(err => {
+            console.log("الرابط غير متصل بعد أو لا يوجد بيانات.", err);
+            // إظهار رسالة عدم وجود بيانات في حالة عدم اتصال الرابط
+            renderReviews([]);
+        });
+});
+
+// --- Scroll To Top Logic ---
+const scrollTopBtn = document.getElementById("scrollTopBtn");
+if (scrollTopBtn) {
+    window.addEventListener("scroll", () => {
+        if (window.scrollY > 500) {
+            scrollTopBtn.classList.add("show");
+        } else {
+            scrollTopBtn.classList.remove("show");
+        }
+    });
+    scrollTopBtn.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+}

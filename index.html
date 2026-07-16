@@ -41,6 +41,7 @@
                 <li><a href="#features">المميزات</a></li>
                 <li><a href="#screens">صور البرنامج</a></li>
                 <li><a href="#pricing">الباقات والأسعار</a></li>
+                <li><a href="#reviews">آراء العملاء</a></li>
                 <li><a href="#faq">الأسئلة الشائعة</a></li>
                 <li><a href="#roadmap">مراحل التطوير</a></li>
                 <li><a href="#contact">التواصل</a></li>
@@ -49,8 +50,6 @@
                 <button id="themeToggle" class="theme-toggle-btn" title="تغيير وضع الإضاءة">
                     <i class="fa-solid fa-moon"></i>
                 </button>
-                <a href="#download" class="btn-primary"><i class="fa-solid fa-download"></i> تحميل
-                    البرنامج</a>
                 <div class="mobile-menu-btn">
                     <i class="fa-solid fa-bars"></i>
                 </div>
@@ -67,15 +66,12 @@
                 <p>إدارة مبيعاتك، مخازنك، حسابات الموردين والعملاء، وتقارير أرباحك في مكان واحد. Bayan POS هو خيارك
                     الأمثل لتنمية نشاطك التجاري بكل سهولة وسرعة.</p>
                 <div class="hero-buttons">
-                    <a href="#download" class="btn-primary btn-large">حمّل نسختك الآن <i
-                            class="fa-solid fa-arrow-left"></i></a>
-                    <a href="#features" class="btn-secondary btn-large">استكشف المميزات <i
-                            class="fa-regular fa-eye"></i></a>
+                    <a href="#download" class="btn-primary btn-large btn-purple-glow"><i class="fa-solid fa-download"></i> تحميل البرنامج</a>
                 </div>
             </div>
             <div class="hero-image">
                 <div class="glass-mockup promo-banner">
-                    <img src="images/bayan_promo_new.png?v=2" alt="Bayan POS Promotional Banner">
+                    <img src="images/dashboard_new.png" alt="Bayan POS Dashboard">
                 </div>
             </div>
         </div>
@@ -156,6 +152,20 @@
                     <p>معالجة سريعة لمرتجعات العملاء واستبدال الأصناف مع تسوية الحسابات والمخزن تلقائياً وبكل دقة.</p>
                 </div>
 
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Demo Section -->
+    <section class="video-demo" id="demo">
+        <div class="container">
+            <div class="section-title">
+                <h2>شاهد <span>البرنامج</span> عملياً</h2>
+                <p>تعرف على مدى سهولة وسرعة استخدام نظام Bayan POS في هذا الفيديو القصير</p>
+            </div>
+            <div class="video-wrapper reveal-up">
+                <!-- استبدل رابط اليوتيوب هنا برابط الفيديو الخاص بك -->
+                <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" title="Bayan POS Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
         </div>
     </section>
@@ -321,6 +331,23 @@
         </div>
     </section>
 
+    <!-- Reviews Section -->
+    <section class="reviews" id="reviews">
+        <div class="container">
+            <div class="section-title">
+                <h2>آراء <span>العملاء</span></h2>
+                <p>ماذا يقول شركاء النجاح عن نظام Bayan POS؟</p>
+            </div>
+            <div class="reviews-grid" id="reviewsContainer">
+                <!-- المراجعات ستظهر هنا تلقائياً عن طريق الجافاسكريبت -->
+                <div style="text-align: center; grid-column: 1 / -1; color: var(--text-gray); padding: 40px;">
+                    <i class="fa-solid fa-spinner fa-spin fa-2x" style="color: var(--accent-color); margin-bottom: 15px;"></i>
+                    <p>جاري تحميل آراء العملاء...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- FAQ Section -->
     <section class="faq" id="faq">
         <div class="container">
@@ -443,9 +470,9 @@
                         <h3>الإصدار الأول النهائي v1.0.0 🚀</h3>
                         <p>تم إطلاق النسخة النهائية والمستقرة الأولى من النظام للويندوز بنجاح. تتضمن هذه المرحلة مراجعة شاملة للواجهات، اختبار الأداء، وضمان تجربة مستخدم سلسة واحترافية تليق بعملائنا.</p>
                         <div class="timeline-tags">
-                            <span>واجهة عصرية</span>
-                            <span>أداء فائق</span>
-                            <span>دعم للوضعين الفاتح والداكن</span>
+                            <span>يعمل بدون إنترنت (Offline)</span>
+                            <span>استقرار وأمان للبيانات</span>
+                            <span>سرعة فائقة في البيع</span>
                         </div>
                     </div>
                 </div>
@@ -554,13 +581,20 @@
                 <h4>✅ تم تسجيل بياناتك بنجاح!</h4>
                 <p>اختر النسخة التي تود تحميلها الآن لتناسب جهازك:</p>
                 <div class="platform-buttons">
-                    <a href="#" class="platform-btn windows-btn" onclick="startDownload(event, 'windows')">
-                        <i class="fa-brands fa-windows"></i>
-                        <span>نسخة الويندوز (PC)</span>
+                    <a href="#" class="platform-btn windows-btn" onclick="startDownload(event, 'windows')" style="display: flex; align-items: center; gap: 15px; padding: 15px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.2); border-radius: 12px; color: #fff; text-decoration: none; transition: 0.3s; margin-bottom: 10px;">
+                        <i class="fa-brands fa-windows" style="font-size: 2.5rem; color: #00a4ef;"></i>
+                        <div style="text-align: right;">
+                            <div style="font-weight: 900; font-size: 1.1rem; margin-bottom: 2px;">تحميل لنظام ويندوز</div>
+                            <div style="font-size: 0.9rem; color: #cbd5e1; margin-bottom: 2px;">الإصدار 1.0.0 (64-bit)</div>
+                            <div style="font-size: 0.85rem; color: var(--accent-color); font-weight: bold;">حجم التنزيل: 85 ميجا بايت</div>
+                        </div>
                     </a>
-                    <a href="#" class="platform-btn android-btn" onclick="startDownload(event, 'android')">
-                        <i class="fa-brands fa-android"></i>
-                        <span>نسخة الأندرويد (Mobile)</span>
+                    <a href="#" class="platform-btn android-btn" onclick="startDownload(event, 'android')" style="display: flex; align-items: center; gap: 15px; padding: 15px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.2); border-radius: 12px; color: #fff; text-decoration: none; transition: 0.3s;">
+                        <i class="fa-brands fa-android" style="font-size: 2.5rem; color: #3DDC84;"></i>
+                        <div style="text-align: right;">
+                            <div style="font-weight: 900; font-size: 1.1rem; margin-bottom: 2px;">تحميل لنظام أندرويد</div>
+                            <div style="font-size: 0.9rem; color: #cbd5e1;">نسخة المتصفح (Web App)</div>
+                        </div>
                     </a>
                 </div>
             </div>
@@ -588,6 +622,14 @@
             </div>
         </div>
     </div>
+
+    <!-- Floating Action Buttons -->
+    <a href="https://wa.me/201006825905" target="_blank" class="floating-whatsapp" title="تواصل معنا على واتساب">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+    <button id="scrollTopBtn" class="scroll-top-btn" title="العودة للأعلى">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
 
     <script src="script.js"></script>
 </body>
