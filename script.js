@@ -224,10 +224,13 @@ window.handleRegistrationSubmit = function(event) {
         return;
     }
 
+    const selectedPlat = window.currentSelectedPlatform || 'غير محدد';
+
     const leadData = {
         name,
         phone,
         businessType,
+        platform: selectedPlat === 'windows' ? 'نسخة الويندوز' : (selectedPlat === 'android' ? 'نسخة الأندرويد' : 'غير محدد'),
         timestamp: new Date().toISOString()
     };
 
@@ -238,7 +241,7 @@ window.handleRegistrationSubmit = function(event) {
     existingLeads.push(leadData);
     localStorage.setItem("bayan_web_leads", JSON.stringify(existingLeads));
 
-    // 2. إرسال البيانات إلى Google Sheets عبر Apps Script
+    // 2. إرسال البيانات إلى Google Sheets عبر Apps Script (متضمنة العمود الجديد نوع النسخة)
     const submitBtn = event.target.querySelector('.submit-download-btn');
     const originalBtnText = submitBtn ? submitBtn.innerHTML : '';
     if (submitBtn) {
@@ -246,10 +249,11 @@ window.handleRegistrationSubmit = function(event) {
         submitBtn.innerHTML = 'جاري إرسال البيانات... ⏳';
     }
 
-        const payload = {
+    const payload = {
         name: name,
         phone: phone,
-        activity: businessType
+        activity: businessType,
+        platform: leadData.platform
     };
 
     fetch("https://script.google.com/macros/s/AKfycbx9Gbq-gQWGWOeM7wvMS1oQ9fJNJgai0aUpByE14-83mPV3VVvoXaqygB_qZmmUtWNt/exec", {
@@ -295,18 +299,18 @@ window.startDownload = function(event, platform) {
         if (typeof gtag !== 'undefined') {
             gtag('event', 'download_windows', {
                 'event_category': 'Download',
-                'event_label': 'Windows EXE v1.0.0'
+                'event_label': 'Windows EXE v1.0.1'
             });
         }
-        alert("💻 جاري تحضير نسخة الويندوز للتحميل...");
-        window.open("https://github.com/ehabamr062-ux/Bayan-Pos-System/releases/download/v1.0.0/Bayan.POS.Setup.1.0.0.exe", "_blank");
+        alert("💻 جاري تحضير نسخة الويندوز الإصدار 1.0.1 المستقرة والعملية للتحميل...");
+        window.open("https://github.com/ehabamr062-ux/Bayan-Pos-System/releases/download/V1.0.1/Bayan.POS.Setup.1.0.1.exe", "_blank");
         downloadModal.style.display = "none";
     } else if (platform === 'android') {
         // Google Analytics: تسجيل حدث تحميل الأندرويد
         if (typeof gtag !== 'undefined') {
             gtag('event', 'download_android', {
                 'event_category': 'Download',
-                'event_label': 'Android Web App'
+                'event_label': 'Android Beta Web App'
             });
         }
         const downloadSelection = document.getElementById("downloadSelection");

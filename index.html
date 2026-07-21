@@ -30,6 +30,12 @@
         </div>
     </div>
 
+    <!-- Top Announcement Bar -->
+    <div class="top-announcement-bar" style="background: linear-gradient(90deg, #5e3370, #10b981); color: white; text-align: center; padding: 10px 15px; font-weight: bold; font-size: 0.95rem; display: flex; align-items: center; justify-content: center; gap: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+        <span>🚀 <strong>نسخة الويندوز v1.0.1 المستقرة والعملية 100% متوفرة الآن!</strong> نوصي بها لتجربة كاشير احترافية وسريعة بدون إنترنت مع تحديثات تلقائية دورية مباشرة.</span>
+        <a href="#downloadModal" class="download-btn" data-platform="windows" style="background: #fbbf24; color: #1e293b; padding: 4px 14px; border-radius: 20px; text-decoration: none; font-size: 0.85rem; font-weight: 900; box-shadow: 0 2px 8px rgba(0,0,0,0.2); cursor: pointer;">تحميل الويندوز 💻</a>
+    </div>
+
     <!-- Navbar -->
     <nav class="navbar">
         <div class="container nav-container">
@@ -61,12 +67,12 @@
     <header class="hero" id="home">
         <div class="container hero-container">
             <div class="hero-content">
-                <div class="badge">🚀 الإصدار الجديد 2026 متاح الآن</div>
+                <div class="badge" style="background: linear-gradient(90deg, rgba(94,51,112,0.2), rgba(16,185,129,0.2)); border: 1px solid #10b981; color: #10b981; font-weight: 800; font-size: 0.95rem; padding: 6px 16px; border-radius: 20px;">🚀 الإصدار الجديد 1.0.1 (المستقر متاح الآن) - تم التحديث اليوم 22/7/2026 ✨</div>
                 <h1><span class="gold-title">نظام كاشير وإدارة أعمال</span> <span>متكامل واحترافي</span></h1>
                 <p>إدارة مبيعاتك، مخازنك، حسابات الموردين والعملاء، وتقارير أرباحك في مكان واحد. Bayan POS هو خيارك
                     الأمثل لتنمية نشاطك التجاري بكل سهولة وسرعة.</p>
                 <div class="hero-buttons">
-                    <a href="#download" class="btn-primary btn-large btn-purple-glow"><i class="fa-solid fa-download"></i> تحميل البرنامج</a>
+                    <a href="#" class="btn-primary btn-large btn-purple-glow download-btn" data-platform="windows"><i class="fa-solid fa-download"></i> تحميل نسخة الويندوز المستقرة</a>
                 </div>
             </div>
             <div class="hero-image">
@@ -356,6 +362,15 @@
                 <p>كل ما تريد معرفته عن نظام Bayan POS</p>
             </div>
             <div class="faq-list">
+                <div class="faq-item highlight-faq" style="border: 2px solid #10b981; background: rgba(16, 185, 129, 0.05); border-radius: 12px; margin-bottom: 15px;">
+                    <div class="faq-question">
+                        <h3 style="color: #10b981;">هل سأحتاج لإعادة تثبيت البرنامج أو دفع مبالغ إضافية للحصول على التحديثات؟ <span class="badge-important" style="background: #10b981; color: white; padding: 2px 8px; border-radius: 10px; font-size: 0.8rem;">🔄 تحديث تلقائي</span></h3>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p style="font-size: 1rem; line-height: 1.7; color: #334155;"><strong>لا إطلاقاً، بمجرد استلامك وتثبيتك لبرنامج بيان POS، ستتلقى التحديثات والتطويرات المستمرة مجاناً وتلقائياً مباشرة داخل البرنامج كل شهر إلى شهر ونصف دون أي تدخل منك ودون الحاجة لإعادة التثبيت!</strong></p>
+                    </div>
+                </div>
                 <div class="faq-item">
                     <div class="faq-question">
                         <h3>هل يعمل البرنامج بدون إنترنت؟</h3>
@@ -443,8 +458,7 @@
                     </div>
                     <div class="faq-answer">
                         <p><strong>لا، البرنامج يعمل بالكامل بدون إنترنت (Offline).</strong> الإنترنت يكون مطلوباً
-                            <u>فقط</u> لتفعيل النسخة أول مرة، أو لعمل النسخ الاحتياطي لبياناتك (حسب الباقة
-                            المختارة).</p>
+                            <u>فقط</u> لتفعيل النسخة أول مرة، أو لتلقي التحديثات التلقائية المباشرة.</p>
                     </div>
                 </div>
             </div>
@@ -460,15 +474,15 @@
             </div>
             
             <div class="timeline">
-                <!-- Current Active Phase -->
+                <!-- 1. First Phase: v1.0.0 (15 July 2026) -->
                 <div class="timeline-item active">
                     <div class="timeline-dot">
                         <i class="fa-solid fa-rocket"></i>
                     </div>
                     <div class="timeline-content">
                         <div class="timeline-date">تم الإصدار (15 يوليو 2026)</div>
-                        <h3>الإصدار الأول النهائي v1.0.0 🚀</h3>
-                        <p>تم إطلاق النسخة النهائية والمستقرة الأولى من النظام للويندوز بنجاح. تتضمن هذه المرحلة مراجعة شاملة للواجهات، اختبار الأداء، وضمان تجربة مستخدم سلسة واحترافية تليق بعملائنا.</p>
+                        <h3>الإصدار الأول v1.0.0 🚀</h3>
+                        <p>تم إطلاق النسخة النهائية والمستقرة الأولى من النظام للويندوز بنجاح. تتضمن مراجعة شاملة للواجهات، اختبار الأداء، وضمان تجربة مستخدم سلسة واحترافية.</p>
                         <div class="timeline-tags">
                             <span>يعمل بدون إنترنت (Offline)</span>
                             <span>استقرار وأمان للبيانات</span>
@@ -477,8 +491,33 @@
                     </div>
                 </div>
 
-                <!-- Placeholder for future updates -->
-                <div class="timeline-item pending" style="border: 2px solid #ff9800; box-shadow: 0 0 20px rgba(255, 152, 0, 0.4); border-radius: 10px; padding: 15px; margin-top: 20px; animation: pulse 2s infinite;">
+                <!-- 2. Second Phase: v1.0.1 Today (22 July 2026) -->
+                <div class="timeline-item active" style="border-right: 4px solid #10b981; margin-top: 25px;">
+                    <div class="timeline-dot" style="background: #10b981;">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-date" style="color: #10b981; font-weight: bold; font-size: 1.05rem;">تم الإصدار (22 يوليو 2026 - الإصدار 1.0.1) 🌟</div>
+                        <h3 style="color: #10b981; font-size: 1.35rem;">الإصدار v1.0.1 - التدوير التلقائي والتحديثات المستقرة 🛠️</h3>
+                        <p style="font-weight: 600; color: #334155; margin-bottom: 8px;">تم إطلاق تحديث اليوم الشامل متضمناً التحسينات والميزات التالية:</p>
+                        <ul style="list-style: disc; margin-right: 20px; font-size: 0.95rem; line-height: 1.7; color: #475569;">
+                            <li><strong>إدارة تدوير النسخ الاحتياطية تلقائياً:</strong> حفظ آخر 100 نسخة حذف الأقدم آلياً دون تدخل المستخدم.</li>
+                            <li><strong>عرض مسار ومجلد الحفظ:</strong> إظهار مسار المجلد الحقيقي <code>C:\Users\username\bayan_backups</code> وميزة الفتح الفوري للمجلد.</li>
+                            <li><strong>تفعيل صلاحيات التاريخ المسبق:</strong> فتح واستمرار إدخال العمليات بتاريخ سابق تلقائياً عند التشغيل.</li>
+                            <li><strong>تصفية السداد النقدي:</strong> شمول كافة مسميات وطرق البيع والسداد النقدي.</li>
+                            <li><strong>تثبيت جدول أرصدة المخازن:</strong> إلغاء الاهتزاز (Flickering) وتثبيت الأبعاد والبادينج عند مرمر الماوس.</li>
+                            <li><strong>تطوير كشف الحساب التفصيلي:</strong> عمود تاريخ التعديل، وتصحيح الخصم، وسلاسة الفلاتر وإصلاح زر إغلاق القسم.</li>
+                        </ul>
+                        <div class="timeline-tags" style="margin-top: 10px;">
+                            <span style="background: rgba(16,185,129,0.15); color: #10b981;">تدوير النسخ الاحتياطية</span>
+                            <span style="background: rgba(16,185,129,0.15); color: #10b981;">استقرار الصلاحيات</span>
+                            <span style="background: rgba(16,185,129,0.15); color: #10b981;">كشف حساب تفصيلي</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Third Phase: Future Updates (1 September 2026 - 1/9) -->
+                <div class="timeline-item pending" style="border: 2px solid #ff9800; box-shadow: 0 0 20px rgba(255, 152, 0, 0.4); border-radius: 10px; padding: 15px; margin-top: 25px; animation: pulse 2s infinite;">
                     <div class="timeline-dot" style="background: #ff9800; color: #fff; box-shadow: 0 0 15px #ff9800;">
                         <i class="fa-solid fa-fire"></i>
                     </div>
@@ -581,19 +620,20 @@
                 <h4>✅ تم تسجيل بياناتك بنجاح!</h4>
                 <p>اختر النسخة التي تود تحميلها الآن لتناسب جهازك:</p>
                 <div class="platform-buttons">
-                    <a href="#" class="platform-btn windows-btn" onclick="startDownload(event, 'windows')" style="display: flex; align-items: center; gap: 15px; padding: 15px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.2); border-radius: 12px; color: #fff; text-decoration: none; transition: 0.3s; margin-bottom: 10px;">
+                    <a href="#" class="platform-btn windows-btn" onclick="startDownload(event, 'windows')" style="display: flex; align-items: center; gap: 15px; padding: 15px; background: rgba(16, 185, 129, 0.1); border: 2px solid #10b981; border-radius: 12px; color: #fff; text-decoration: none; transition: 0.3s; margin-bottom: 15px;">
                         <i class="fa-brands fa-windows" style="font-size: 2.5rem; color: #00a4ef;"></i>
                         <div style="text-align: right;">
-                            <div style="font-weight: 900; font-size: 1.1rem; margin-bottom: 2px;">تحميل لنظام ويندوز</div>
-                            <div style="font-size: 0.9rem; color: #cbd5e1; margin-bottom: 2px;">الإصدار 1.0.0 (64-bit)</div>
-                            <div style="font-size: 0.85rem; color: var(--accent-color); font-weight: bold;">حجم التنزيل: 85 ميجا بايت</div>
+                            <div style="font-weight: 900; font-size: 1.1rem; color: #10b981; margin-bottom: 2px;">تحميل لنظام ويندوز 🌟 (توصية مؤكدة)</div>
+                            <div style="font-size: 0.9rem; color: #cbd5e1; margin-bottom: 2px;">الإصدار 1.0.1 المستقر والعملي 100% (64-bit)</div>
+                            <div style="font-size: 0.85rem; color: #fbbf24; font-weight: bold;">يعمل بدون إنترنت + تحديثات تلقائية دورية</div>
                         </div>
                     </a>
-                    <a href="#" class="platform-btn android-btn" onclick="startDownload(event, 'android')" style="display: flex; align-items: center; gap: 15px; padding: 15px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.2); border-radius: 12px; color: #fff; text-decoration: none; transition: 0.3s;">
+                    <a href="#" class="platform-btn android-btn" onclick="startDownload(event, 'android')" style="display: flex; align-items: center; gap: 15px; padding: 15px; background: rgba(255,152,0,0.08); border: 1px solid rgba(255,152,0,0.3); border-radius: 12px; color: #fff; text-decoration: none; transition: 0.3s;">
                         <i class="fa-brands fa-android" style="font-size: 2.5rem; color: #3DDC84;"></i>
                         <div style="text-align: right;">
-                            <div style="font-weight: 900; font-size: 1.1rem; margin-bottom: 2px;">تحميل لنظام أندرويد</div>
-                            <div style="font-size: 0.9rem; color: #cbd5e1;">نسخة المتصفح (Web App)</div>
+                            <div style="font-weight: 900; font-size: 1.1rem; margin-bottom: 2px;">تحميل لنظام أندرويد (نسخة بيتا 🧪)</div>
+                            <div style="font-size: 0.88rem; color: #ff9800; font-weight: bold;">نسخة بيتا تجريبية وقابلة للتطوير</div>
+                            <div style="font-size: 0.8rem; color: #94a3b8;">النسخة النهائية المستقرة تنزل يوم 15/9/2026</div>
                         </div>
                     </a>
                 </div>
@@ -601,22 +641,23 @@
 
             <!-- شاشة تحذير الأندرويد -->
             <div id="androidWarning" class="download-selection" style="display: none; text-align: right;">
-                <h4 style="color: #ff9800; font-size: 1.2rem; margin-bottom: 15px;">⚠️ تنبيه هام لمستخدمي الأندرويد!</h4>
+                <h4 style="color: #ff9800; font-size: 1.2rem; margin-bottom: 15px;">🧪 تنبيه خاص بنسخة الأندرويد (Beta)!</h4>
                 <p style="margin-bottom: 15px; font-size: 0.95rem; line-height: 1.6;">
-                    هذه النسخة تعمل مباشرة من خلال المتصفح.<br>
-                    <strong>🚨 تحذير:</strong> إذا قمت بحذف بيانات التصفح (Clear Data) من متصفحك، <strong>سيتم مسح جميع بيانات التطبيق!</strong>
+                    هذه النسخة حالياً هي <strong>نسخة بيتا تجريبية وقابلة للتطوير</strong> وتعمل عبر المتصفح.<br>
+                    <strong>🚨 تنبيه:</strong> النسخة المستقرة والحقيقية والأقوى لنظام الأندرويد ستصدر رسمياً يوم <strong>15/9/2026</strong>!<br>
+                    إذا قمت بحذف بيانات التصفح من متصفحك الحالي، <strong>قد يتم مسح بيانات التطبيق!</strong>
                 </p>
                 <div style="background: rgba(255, 152, 0, 0.1); padding: 10px; border-radius: 8px; margin-bottom: 15px; font-size: 0.9rem;">
-                    <strong>💡 نوصي بشدة بما يلي:</strong>
+                    <strong>💡 نوصي بما يلي:</strong>
                     <ul style="list-style: disc; margin-right: 20px; margin-top: 10px;">
-                        <li>استخدام حساب متصفح خاص (Profile) منفصل للتطبيق.</li>
-                        <li>عمل <strong>نسخة احتياطية (Backup)</strong> لبياناتك بشكل دوري من داخل التطبيق.</li>
+                        <li>تنزيل <strong>نسخة الويندوز v1.0.1</strong> للعمل المستقر بضمان 100%.</li>
+                        <li>عمل <strong>نسخة احتياطية (Backup)</strong> دورية لبياناتك عند استخدام الأندرويد.</li>
                     </ul>
                 </div>
                 <div class="platform-buttons" style="margin-top: 20px;">
                     <a href="https://ehabamr062-ux.github.io/Bayan-Pos-System-V2.5/" target="_blank" class="platform-btn android-btn" style="width: 100%; justify-content: center;" onclick="document.getElementById('downloadModal').style.display='none'">
                         <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                        <span>فهمت ذلك، افتح التطبيق الآن</span>
+                        <span>فهمت ذلك، افتح نسخة الأندرويد التجريبية (Beta)</span>
                     </a>
                 </div>
             </div>
