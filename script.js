@@ -1,5 +1,5 @@
 // --- Theme Toggle Logic (Light / Luxury Dark) ---
-(function() {
+(function () {
     const themeKey = 'bayan_site_theme';
     const savedTheme = localStorage.getItem(themeKey);
     if (savedTheme === 'light') {
@@ -10,10 +10,10 @@
 document.addEventListener('DOMContentLoaded', () => {
     const themeToggleBtn = document.getElementById('themeToggle');
     const themeKey = 'bayan_site_theme';
-    
+
     if (themeToggleBtn) {
         const themeIcon = themeToggleBtn.querySelector('i');
-        
+
         const updateIcon = () => {
             if (document.body.classList.contains('light-mode')) {
                 themeIcon.classList.remove('fa-moon');
@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // --- Cache Busting / Auto Update Version Check ---
-(function() {
+(function () {
     const versionKey = 'bayan_site_version';
     const checkVersion = async () => {
         try {
@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
 const mobileBtn = document.querySelector('.mobile-menu-btn');
 const navLinks = document.querySelector('.nav-links');
 
-if(mobileBtn && navLinks) {
+if (mobileBtn && navLinks) {
     mobileBtn.addEventListener('click', () => {
         navLinks.classList.toggle('active');
         const icon = mobileBtn.querySelector('i');
@@ -81,7 +81,7 @@ if(mobileBtn && navLinks) {
             icon.classList.add('fa-bars');
         }
     });
-    
+
     // Close menu when clicking on a link
     navLinks.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {
@@ -104,7 +104,7 @@ document.querySelectorAll('.faq-question').forEach(question => {
     question.addEventListener('click', () => {
         const item = question.parentElement;
         const isActive = item.classList.contains('active');
-        
+
         // Close all other FAQs
         document.querySelectorAll('.faq-item').forEach(otherItem => {
             otherItem.classList.remove('active');
@@ -134,9 +134,9 @@ const modal = document.getElementById("imageModal");
 const modalImg = document.getElementById("expandedImg");
 const closeBtn = document.getElementsByClassName("close-modal")[0];
 
-if(modal && modalImg && closeBtn) {
+if (modal && modalImg && closeBtn) {
     document.querySelectorAll('.screen-card img').forEach(img => {
-        img.addEventListener("click", function() {
+        img.addEventListener("click", function () {
             modal.style.display = "block";
             modalImg.src = this.src;
         });
@@ -161,15 +161,15 @@ const registrationForm = document.getElementById("registrationForm");
 const downloadSelection = document.getElementById("downloadSelection");
 
 function resetDownloadModal() {
-    if(registrationForm) {
+    if (registrationForm) {
         registrationForm.reset();
         registrationForm.style.display = "block";
     }
-    if(downloadSelection) {
+    if (downloadSelection) {
         downloadSelection.style.display = "none";
     }
     const androidWarning = document.getElementById("androidWarning");
-    if(androidWarning) {
+    if (androidWarning) {
         androidWarning.style.display = "none";
     }
 }
@@ -181,18 +181,18 @@ if (downloadModal && closeDownloadBtn) {
             e.preventDefault(); // منع التحميل المباشر المؤقت
             const platform = btn.getAttribute("data-platform");
             window.currentSelectedPlatform = platform;
-            
+
             resetDownloadModal(); // إعادة تهيئة النافذة
             downloadModal.style.display = "flex"; // عرض النافذة
-            
+
             // فحص إذا كان المستخدم مسجل مسبقاً على هذا المتصفح لتجنب التكرار
             const existingLeads = JSON.parse(localStorage.getItem("bayan_web_leads") || "[]");
             if (existingLeads.length > 0) {
-                if(registrationForm) registrationForm.style.display = "none";
-                if(platform) {
-                    startDownload({preventDefault:()=>{}}, platform);
+                if (registrationForm) registrationForm.style.display = "none";
+                if (platform) {
+                    startDownload({ preventDefault: () => { } }, platform);
                 } else {
-                    if(downloadSelection) downloadSelection.style.display = "block";
+                    if (downloadSelection) downloadSelection.style.display = "block";
                 }
             }
         });
@@ -211,9 +211,9 @@ if (downloadModal && closeDownloadBtn) {
 }
 
 // معالجة إرسال النموذج والتحميل
-window.handleRegistrationSubmit = function(event) {
+window.handleRegistrationSubmit = function (event) {
     event.preventDefault();
-    
+
     const name = document.getElementById("regName").value;
     const phone = document.getElementById("regPhone").value.trim();
     const businessType = document.getElementById("regBusinessType").value;
@@ -256,7 +256,7 @@ window.handleRegistrationSubmit = function(event) {
         platform: leadData.platform
     };
 
-    fetch("https://script.google.com/macros/s/AKfycbx9Gbq-gQWGWOeM7wvMS1oQ9fJNJgai0aUpByE14-83mPV3VVvoXaqygB_qZmmUtWNt/exec", {
+    fetch("https://script.google.com/macros/s/AKfycbz3BKpeOScHFRH_5r1T7xscjLCtGBiaFORV4ap9xpIecU2MuFUwNBN67DvEFScH1LnScQ/exec", {
         method: "POST",
         mode: "no-cors",
         headers: {
@@ -264,35 +264,35 @@ window.handleRegistrationSubmit = function(event) {
         },
         body: JSON.stringify(payload)
     })
-    .then(() => {
-        console.log("Data sent to Google Sheets successfully");
-        registrationForm.style.display = "none";
-        if (window.currentSelectedPlatform) {
-            startDownload({preventDefault:()=>{}}, window.currentSelectedPlatform);
-        } else {
-            downloadSelection.style.display = "block";
-        }
-    })
-    .catch(err => {
-        console.error("Error sending to Google Sheets:", err);
-        // الاستمرار في التحميل حتى لو فشل الاتصال كخيار احتياطي لضمان تجربة مستخدم سلسة
-        registrationForm.style.display = "none";
-        if (window.currentSelectedPlatform) {
-            startDownload({preventDefault:()=>{}}, window.currentSelectedPlatform);
-        } else {
-            downloadSelection.style.display = "block";
-        }
-    })
-    .finally(() => {
-        if (submitBtn) {
-            submitBtn.disabled = false;
-            submitBtn.innerHTML = originalBtnText;
-        }
-    });
+        .then(() => {
+            console.log("Data sent to Google Sheets successfully");
+            registrationForm.style.display = "none";
+            if (window.currentSelectedPlatform) {
+                startDownload({ preventDefault: () => { } }, window.currentSelectedPlatform);
+            } else {
+                downloadSelection.style.display = "block";
+            }
+        })
+        .catch(err => {
+            console.error("Error sending to Google Sheets:", err);
+            // الاستمرار في التحميل حتى لو فشل الاتصال كخيار احتياطي لضمان تجربة مستخدم سلسة
+            registrationForm.style.display = "none";
+            if (window.currentSelectedPlatform) {
+                startDownload({ preventDefault: () => { } }, window.currentSelectedPlatform);
+            } else {
+                downloadSelection.style.display = "block";
+            }
+        })
+        .finally(() => {
+            if (submitBtn) {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnText;
+            }
+        });
 };
 
 // بدء التحميل حسب المنصة
-window.startDownload = function(event, platform) {
+window.startDownload = function (event, platform) {
     event.preventDefault();
     if (platform === 'windows') {
         // Google Analytics: تسجيل حدث تحميل الويندوز
@@ -315,7 +315,7 @@ window.startDownload = function(event, platform) {
         }
         const downloadSelection = document.getElementById("downloadSelection");
         const androidWarning = document.getElementById("androidWarning");
-        if(downloadSelection && androidWarning) {
+        if (downloadSelection && androidWarning) {
             downloadSelection.style.display = "none";
             androidWarning.style.display = "block";
         }
@@ -347,7 +347,7 @@ document.addEventListener("DOMContentLoaded", () => {
         rootMargin: '0px',
         threshold: 0.15
     };
-    
+
     const revealObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -368,11 +368,11 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!reviewsContainer) return;
 
     // الرابط اللي هيجيب منه الآراء (هيتم تغييره برابط Google Apps Script أو السيرفر الخاص بك)
-    const REVIEWS_API_URL = "YOUR_SERVER_API_URL_HERE"; 
+    const REVIEWS_API_URL = "YOUR_SERVER_API_URL_HERE";
 
     function renderReviews(reviews) {
         reviewsContainer.innerHTML = ''; // تفريغ رسالة التحميل
-        
+
         if (!reviews || reviews.length === 0) {
             reviewsContainer.innerHTML = `
                 <div style="text-align: center; grid-column: 1 / -1; color: var(--text-gray); padding: 40px;">
@@ -384,7 +384,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         reviews.forEach(review => {
             const initial = review.name.charAt(0);
-            const stars = Array(5).fill(0).map((_, i) => 
+            const stars = Array(5).fill(0).map((_, i) =>
                 `<i class="fa-solid fa-star" style="color: ${i < review.rating ? '#fbbf24' : '#475569'}"></i>`
             ).join('');
 
@@ -420,7 +420,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // محاولة جلب البيانات من السيرفر
     fetch(REVIEWS_API_URL)
         .then(response => {
-            if(!response.ok) throw new Error("API not ready");
+            if (!response.ok) throw new Error("API not ready");
             return response.json();
         })
         .then(data => {
