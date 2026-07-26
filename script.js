@@ -2,7 +2,8 @@
 (function () {
     const themeKey = 'bayan_site_theme';
     const savedTheme = localStorage.getItem(themeKey);
-    if (savedTheme === 'light') {
+    // افتراضياً: إذا لم يكن المستخدم اختار الوضع الداكن صراحة، يتم تفعيل الوضع الفاتح
+    if (savedTheme !== 'dark') {
         document.body.classList.add('light-mode');
     }
 })();
@@ -71,9 +72,9 @@ const navLinks = document.querySelector('.nav-links');
 
 if (mobileBtn && navLinks) {
     mobileBtn.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
+        navLinks.classList.toggle('open');
         const icon = mobileBtn.querySelector('i');
-        if (navLinks.classList.contains('active')) {
+        if (navLinks.classList.contains('open')) {
             icon.classList.remove('fa-bars');
             icon.classList.add('fa-xmark');
         } else {
@@ -85,7 +86,7 @@ if (mobileBtn && navLinks) {
     // Close menu when clicking on a link
     navLinks.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {
-            navLinks.classList.remove('active');
+            navLinks.classList.remove('open');
             const icon = mobileBtn.querySelector('i');
             icon.classList.remove('fa-xmark');
             icon.classList.add('fa-bars');
@@ -128,6 +129,7 @@ window.addEventListener('scroll', () => {
         }
     }
 });
+
 
 // Image Modal (Lightbox)
 const modal = document.getElementById("imageModal");
@@ -175,26 +177,29 @@ function resetDownloadModal() {
 }
 
 if (downloadModal && closeDownloadBtn) {
-    // اعتراض ضغطة زر التحميل لعرض النموذج أولاً
+    // اعتراض ضغطة زر التحميل لعرض النموذج دائماً لكل منصة
     downloadButtons.forEach(btn => {
         btn.addEventListener("click", (e) => {
-            e.preventDefault(); // منع التحميل المباشر المؤقت
+            e.preventDefault();
             const platform = btn.getAttribute("data-platform");
+
+            if (platform === 'android') {
+                showAndroidUnavailable();
+                return;
+            }
+
             window.currentSelectedPlatform = platform;
 
-            resetDownloadModal(); // إعادة تهيئة النافذة
-            downloadModal.style.display = "flex"; // عرض النافذة
-
-            // فحص إذا كان المستخدم مسجل مسبقاً على هذا المتصفح لتجنب التكرار
+            // إذا كان المستخدم قد سجل بياناته مسبقاً في هذا المتصفح، يتم التحميل مباشرة بدون نافذة
             const existingLeads = JSON.parse(localStorage.getItem("bayan_web_leads") || "[]");
             if (existingLeads.length > 0) {
-                if (registrationForm) registrationForm.style.display = "none";
-                if (platform) {
-                    startDownload({ preventDefault: () => { } }, platform);
-                } else {
-                    if (downloadSelection) downloadSelection.style.display = "block";
-                }
+                startDownload(e, platform || 'windows');
+                return;
             }
+
+            // للمستخدمين الجدد لأول مرة فقط: عرض نافذة التسجيل
+            resetDownloadModal();
+            downloadModal.style.display = "flex";
         });
     });
 
@@ -299,11 +304,11 @@ window.startDownload = function (event, platform) {
         if (typeof gtag !== 'undefined') {
             gtag('event', 'download_windows', {
                 'event_category': 'Download',
-                'event_label': 'Windows EXE v1.0.1'
+                'event_label': 'Windows EXE v1.0.3'
             });
         }
-        alert("💻 جاري تحضير نسخة الويندوز الإصدار 1.0.1 المستقرة والعملية للتحميل...");
-        window.open("https://github.com/ehabamr062-ux/Bayan-Pos-System/releases/download/V1.0.1/Bayan.POS.Setup.1.0.1.exe", "_blank");
+        alert("💻 جاري تحضير نسخة الويندوز الإصدار 1.0.3 المستقرة والعملية للتحميل...");
+        window.open("https://github.com/ehabamr062-ux/Bayan-Pos-System/releases/download/V1.0.3/Bayan.POS.Setup.1.0.3.exe", "_blank");
         downloadModal.style.display = "none";
     } else if (platform === 'android') {
         // Google Analytics: تسجيل حدث تحميل الأندرويد
@@ -447,3 +452,21 @@ if (scrollTopBtn) {
         window.scrollTo({ top: 0, behavior: "smooth" });
     });
 }
+
+// --- Roadmap Timeline Accordion (Collapsible) ---
+function toggleTimelineItem(headerEl) {
+    const item = headerEl.closest('.collapsible-timeline');
+    if (!item) return;
+    item.classList.toggle('open');
+}
+
+// --- Android Unavailable Modal ---
+function showAndroidUnavailable() {
+    const modal = document.getElementById('androidUnavailableModal');
+    if (modal) modal.style.display = 'flex';
+}
+document.addEventListener('click', (e) => {
+    const modal = document.getElementById('androidUnavailableModal');
+    if (modal && e.target === modal) modal.style.display = 'none';
+});
+
