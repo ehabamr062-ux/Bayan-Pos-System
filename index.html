@@ -30,16 +30,6 @@
         </div>
     </div>
 
-    <!-- Top Announcement Bar -->
-    <div class="top-announcement-bar"
-        style="background: linear-gradient(90deg, #5e3370, #10b981); color: white; text-align: center; padding: 10px 15px; font-weight: bold; font-size: 0.95rem; display: flex; align-items: center; justify-content: center; gap: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
-        <span>🚀 <strong>نسخة الويندوز v1.0.3 المستقرة والعملية 100% متوفرة الآن!</strong> نوصي بها لتجربة كاشير
-            احترافية وسريعة بدون إنترنت مع تحديثات تلقائية دورية مباشرة.</span>
-        <a href="#downloadModal" class="download-btn" data-platform="windows"
-            style="background: #fbbf24; color: #1e293b; padding: 4px 14px; border-radius: 20px; text-decoration: none; font-size: 0.85rem; font-weight: 900; box-shadow: 0 2px 8px rgba(0,0,0,0.2); cursor: pointer;">تحميل
-            الويندوز 💻</a>
-    </div>
-
     <!-- Navbar -->
     <nav class="navbar">
         <div class="container nav-container">
@@ -192,19 +182,49 @@
         <div class="container">
             <div class="section-title">
                 <h2>شاهد <span>البرنامج</span> عملياً</h2>
-                <p>تعرف على مدى سهولة وسرعة استخدام نظام Bayan POS في هذا الفيديو القصير</p>
+                <p>تعرف على مدى سهولة وسرعة استخدام نظام Bayan POS من خلال الشرح التفصيلي أو الفيديو السريع</p>
             </div>
-            <div class="video-wrapper shorts-wrapper" style="max-width: 360px; height: 640px; margin: 0 auto; border-radius: 24px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.35), 0 0 35px rgba(16,185,129,0.35); border: 4px solid #10b981; background: #000; position: relative;">
-                <iframe src="https://www.youtube-nocookie.com/embed/fXkhsaGkCoE?rel=0" title="Bayan POS Demo" frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerpolicy="strict-origin-when-cross-origin"
-                    style="width: 100%; height: 100%; border: none;"
-                    allowfullscreen></iframe>
-            </div>
-            <div style="text-align: center; margin-top: 18px;">
-                <a href="https://youtube.com/shorts/fXkhsaGkCoE" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; font-size: 0.92rem; font-weight: 800; padding: 10px 22px; border-radius: 25px; background: linear-gradient(135deg, #ff0000, #cc0000); color: #ffffff; text-decoration: none; box-shadow: 0 4px 15px rgba(255,0,0,0.3); transition: 0.3s;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
-                    <i class="fa-brands fa-youtube" style="font-size: 1.2rem;"></i> مشاهدة الشرح مباشرة على YouTube ↗️
-                </a>
+            
+            <div class="video-grid-container" style="display: flex; gap: 30px; align-items: stretch; justify-content: center; flex-wrap: wrap;">
+                <!-- Full Video Demo (16:9) -->
+                <div class="video-card-item" style="flex: 1 1 500px; max-width: 680px; background: rgba(255,255,255,0.03); border: 1.5px solid rgba(16,185,129,0.3); border-radius: 20px; padding: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.25); display: flex; flex-direction: column; justify-content: space-between;">
+                    <div style="margin-bottom: 14px; text-align: right;">
+                        <h3 style="color: #10b981; font-size: 1.15rem; font-weight: 800; margin-bottom: 4px;"><i class="fa-solid fa-play-circle"></i> الشرح التفصيلي الشامل (16:9)</h3>
+                        <p style="font-size: 0.88rem; color: #94a3b8; margin: 0;">شرح كامل لجميع مميزات النظام وطريقة العمل عليه بالتفصيل</p>
+                    </div>
+                    <div style="width: 100%; aspect-ratio: 16/9; border-radius: 14px; overflow: hidden; background: #000; border: 2px solid rgba(16,185,129,0.4); box-shadow: 0 8px 25px rgba(0,0,0,0.4);">
+                        <iframe src="https://www.youtube-nocookie.com/embed/9NU7fdVsjJ8?rel=0" title="Bayan POS Full Demo" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin"
+                            style="width: 100%; height: 100%; border: none;"
+                            allowfullscreen></iframe>
+                    </div>
+                    <div style="text-align: center; margin-top: 16px;">
+                        <a href="https://youtu.be/9NU7fdVsjJ8?si=pAj7XFbAXmZ1OMhV" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; font-size: 0.88rem; font-weight: 800; padding: 10px 20px; border-radius: 20px; background: linear-gradient(135deg, #ff0000, #cc0000); color: #ffffff; text-decoration: none; transition: 0.3s;">
+                            <i class="fa-brands fa-youtube" style="font-size: 1.1rem;"></i> مشاهدة الشرح الكامل على YouTube ↗️
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Shorts Video Demo (9:16) -->
+                <div class="video-card-item" style="flex: 0 1 300px; width: 100%; max-width: 320px; background: rgba(255,255,255,0.03); border: 1.5px solid rgba(16,185,129,0.3); border-radius: 20px; padding: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.25); display: flex; flex-direction: column; justify-content: space-between;">
+                    <div style="margin-bottom: 14px; text-align: right;">
+                        <h3 style="color: #10b981; font-size: 1.15rem; font-weight: 800; margin-bottom: 4px;"><i class="fa-solid fa-mobile-screen-button"></i> نظرة سريعة (Shorts 9:16)</h3>
+                        <p style="font-size: 0.88rem; color: #94a3b8; margin: 0;">استعراض سريع للنظام في أقل من دقيقة واحدة</p>
+                    </div>
+                    <div style="width: 100%; height: 480px; border-radius: 14px; overflow: hidden; background: #000; border: 2px solid rgba(16,185,129,0.4); box-shadow: 0 8px 25px rgba(0,0,0,0.4); margin: 0 auto;">
+                        <iframe src="https://www.youtube-nocookie.com/embed/fXkhsaGkCoE?rel=0" title="Bayan POS Shorts Demo" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin"
+                            style="width: 100%; height: 100%; border: none;"
+                            allowfullscreen></iframe>
+                    </div>
+                    <div style="text-align: center; margin-top: 16px;">
+                        <a href="https://youtube.com/shorts/fXkhsaGkCoE" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; font-size: 0.88rem; font-weight: 800; padding: 10px 20px; border-radius: 20px; background: linear-gradient(135deg, #ff0000, #cc0000); color: #ffffff; text-decoration: none; transition: 0.3s;">
+                            <i class="fa-brands fa-youtube" style="font-size: 1.1rem;"></i> مشاهدة Shorts على YouTube ↗️
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -405,10 +425,10 @@
                 <div class="faq-item highlight-faq"
                     style="border: 2px solid #10b981; background: rgba(16, 185, 129, 0.05); border-radius: 12px; margin-bottom: 15px;">
                     <div class="faq-question">
-                        <h3 style="color: #10b981;">هل سأحتاج لإعادة تثبيت البرنامج أو دفع مبالغ إضافية للحصول على
-                            التحديثات؟ <span class="badge-important"
-                                style="background: #10b981; color: white; padding: 2px 8px; border-radius: 10px; font-size: 0.8rem;">🔄
-                                تحديث تلقائي</span></h3>
+                        <h3 style="color: #10b981;">
+                            <span>هل سأحتاج لإعادة تثبيت البرنامج أو دفع مبالغ إضافية للحصول على التحديثات؟</span>
+                            <span class="badge-important" style="background: #10b981; color: white; padding: 3px 10px; border-radius: 10px; font-size: 0.8rem; display: inline-flex; align-items: center; width: max-content;">🔄 تحديث تلقائي</span>
+                        </h3>
                         <i class="fa-solid fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
@@ -500,7 +520,10 @@
                 </div>
                 <div class="faq-item highlight-faq">
                     <div class="faq-question">
-                        <h3>هل أحتاج للاتصال بالإنترنت بشكل دائم؟ <span class="badge-important">🔥 هام جداً</span></h3>
+                        <h3>
+                            <span>هل أحتاج للاتصال بالإنترنت بشكل دائم؟</span>
+                            <span class="badge-important" style="background: #ef4444; color: white; padding: 3px 10px; border-radius: 10px; font-size: 0.8rem; display: inline-flex; align-items: center; width: max-content;">🔥 هام جداً</span>
+                        </h3>
                         <i class="fa-solid fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
@@ -711,7 +734,7 @@
                     <a href="https://www.facebook.com/amr.ehab.359071" target="_blank" class="contact-btn facebook">
                         <i class="fa-solid fa-user-tie"></i> التواصل مع المطور
                     </a>
-                    <a href="https://youtube.com/shorts/fXkhsaGkCoE" target="_blank" class="contact-btn youtube" style="background: linear-gradient(135deg, #ff0000, #cc0000); color: #ffffff;">
+                    <a href="https://youtube.com/@bayansoftware-i2w?si=Jjs9qe5hh3kz-JUI" target="_blank" class="contact-btn youtube" style="background: linear-gradient(135deg, #ff0000, #cc0000); color: #ffffff;">
                         <i class="fa-brands fa-youtube" style="font-size: 1.1rem;"></i> قناة Bayan الرسمية على YouTube
                     </a>
                 </div>

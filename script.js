@@ -71,25 +71,48 @@ const mobileBtn = document.querySelector('.mobile-menu-btn');
 const navLinks = document.querySelector('.nav-links');
 
 if (mobileBtn && navLinks) {
-    mobileBtn.addEventListener('click', () => {
-        navLinks.classList.toggle('open');
-        const icon = mobileBtn.querySelector('i');
-        if (navLinks.classList.contains('open')) {
-            icon.classList.remove('fa-bars');
-            icon.classList.add('fa-xmark');
+    mobileBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = navLinks.classList.contains('open') || navLinks.classList.contains('active');
+        if (isOpen) {
+            navLinks.classList.remove('open', 'active');
         } else {
-            icon.classList.remove('fa-xmark');
-            icon.classList.add('fa-bars');
+            navLinks.classList.add('open', 'active');
+        }
+        
+        const icon = mobileBtn.querySelector('i');
+        if (icon) {
+            if (navLinks.classList.contains('open')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            } else {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            }
         }
     });
 
-    // Close menu when clicking on a link
+    // إغلاق القائمة عند النقر خارجها
+    document.addEventListener('click', (e) => {
+        if ((navLinks.classList.contains('open') || navLinks.classList.contains('active')) && !navLinks.contains(e.target) && !mobileBtn.contains(e.target)) {
+            navLinks.classList.remove('open', 'active');
+            const icon = mobileBtn.querySelector('i');
+            if (icon) {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            }
+        }
+    });
+
+    // إغلاق القائمة عند النقر على أي رابط
     navLinks.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {
-            navLinks.classList.remove('open');
+            navLinks.classList.remove('open', 'active');
             const icon = mobileBtn.querySelector('i');
-            icon.classList.remove('fa-xmark');
-            icon.classList.add('fa-bars');
+            if (icon) {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            }
         });
     });
 }
@@ -229,31 +252,24 @@ window.handleRegistrationSubmit = function (event) {
         return;
     }
 
-    const selectedPlat = window.currentSelectedPlatform || 'غير محدد';
+    const selectedPlat = window.currentSelectedPlatform || 'windows';
 
     const leadData = {
         name,
         phone,
         businessType,
-        platform: selectedPlat === 'windows' ? 'نسخة الويندوز' : (selectedPlat === 'android' ? 'نسخة الأندرويد' : 'غير محدد'),
+        platform: selectedPlat === 'android' ? 'نسخة الأندرويد' : 'نسخة الويندوز',
         timestamp: new Date().toISOString()
     };
 
     console.log("📝 تم تسجيل عميل جديد:", leadData);
 
-    // 1. حفظ البيانات محلياً في المتصفح كنسخة احتياطية آمنة
+    // 1. حفظ البيانات محلياً كنسخة احتياطية آمنة
     const existingLeads = JSON.parse(localStorage.getItem("bayan_web_leads") || "[]");
     existingLeads.push(leadData);
     localStorage.setItem("bayan_web_leads", JSON.stringify(existingLeads));
 
-    // 2. إرسال البيانات إلى Google Sheets عبر Apps Script (متضمنة العمود الجديد نوع النسخة)
-    const submitBtn = event.target.querySelector('.submit-download-btn');
-    const originalBtnText = submitBtn ? submitBtn.innerHTML : '';
-    if (submitBtn) {
-        submitBtn.disabled = true;
-        submitBtn.innerHTML = 'جاري إرسال البيانات... ⏳';
-    }
-
+    // 2. إرسال البيانات إلى Google Sheets في الخلفية دون تعطيل أو تأخير التحميل المباشر
     const payload = {
         name: name,
         phone: phone,
@@ -264,42 +280,20 @@ window.handleRegistrationSubmit = function (event) {
     fetch("https://script.google.com/macros/s/AKfycbz3BKpeOScHFRH_5r1T7xscjLCtGBiaFORV4ap9xpIecU2MuFUwNBN67DvEFScH1LnScQ/exec", {
         method: "POST",
         mode: "no-cors",
-        headers: {
-            "Content-Type": "text/plain"
-        },
+        headers: { "Content-Type": "text/plain" },
         body: JSON.stringify(payload)
-    })
-        .then(() => {
-            console.log("Data sent to Google Sheets successfully");
-            registrationForm.style.display = "none";
-            if (window.currentSelectedPlatform) {
-                startDownload({ preventDefault: () => { } }, window.currentSelectedPlatform);
-            } else {
-                downloadSelection.style.display = "block";
-            }
-        })
-        .catch(err => {
-            console.error("Error sending to Google Sheets:", err);
-            // الاستمرار في التحميل حتى لو فشل الاتصال كخيار احتياطي لضمان تجربة مستخدم سلسة
-            registrationForm.style.display = "none";
-            if (window.currentSelectedPlatform) {
-                startDownload({ preventDefault: () => { } }, window.currentSelectedPlatform);
-            } else {
-                downloadSelection.style.display = "block";
-            }
-        })
-        .finally(() => {
-            if (submitBtn) {
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = originalBtnText;
-            }
-        });
+    }).catch(err => console.error("Error sending to Google Sheets:", err));
+
+    // 3. البدء الفوري في تنزيل الملف لمنع حجب النوافذ المنبثقة من قِبل المتصفحات
+    startDownload(event, selectedPlat);
 };
 
 // بدء التحميل حسب المنصة
 window.startDownload = function (event, platform) {
-    event.preventDefault();
-    if (platform === 'windows') {
+    if (event && event.preventDefault) event.preventDefault();
+    const plat = platform || window.currentSelectedPlatform || 'windows';
+
+    if (plat === 'windows') {
         // Google Analytics: تسجيل حدث تحميل الويندوز
         if (typeof gtag !== 'undefined') {
             gtag('event', 'download_windows', {
@@ -307,10 +301,15 @@ window.startDownload = function (event, platform) {
                 'event_label': 'Windows EXE v1.0.3'
             });
         }
-        alert("💻 جاري تحضير نسخة الويندوز الإصدار 1.0.3 المستقرة والعملية للتحميل...");
-        window.open("https://github.com/ehabamr062-ux/Bayan-Pos-System/releases/download/V1.0.3/Bayan.POS.Setup.1.0.3.exe", "_blank");
-        downloadModal.style.display = "none";
-    } else if (platform === 'android') {
+        
+        // استخدام حرف v صغير v1.0.3 المطابق لوسم GitHub المعتمد
+        const downloadUrl = "https://github.com/ehabamr062-ux/Bayan-Pos-System/releases/download/v1.0.3/Bayan.POS.Setup.1.0.3.exe";
+
+        // تنزيل الملف المباشر فوراً لمنع أي صفحة 404 جديدة
+        window.location.href = downloadUrl;
+
+        if (downloadModal) downloadModal.style.display = "none";
+    } else if (plat === 'android') {
         // Google Analytics: تسجيل حدث تحميل الأندرويد
         if (typeof gtag !== 'undefined') {
             gtag('event', 'download_android', {
@@ -318,12 +317,8 @@ window.startDownload = function (event, platform) {
                 'event_label': 'Android Beta Web App'
             });
         }
-        const downloadSelection = document.getElementById("downloadSelection");
-        const androidWarning = document.getElementById("androidWarning");
-        if (downloadSelection && androidWarning) {
-            downloadSelection.style.display = "none";
-            androidWarning.style.display = "block";
-        }
+        if (downloadModal) downloadModal.style.display = "none";
+        showAndroidUnavailable();
     }
 };
 
