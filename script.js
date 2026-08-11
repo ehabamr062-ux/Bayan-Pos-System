@@ -298,12 +298,12 @@ window.startDownload = function (event, platform) {
         if (typeof gtag !== 'undefined') {
             gtag('event', 'download_windows', {
                 'event_category': 'Download',
-                'event_label': 'Windows EXE v1.0.3'
+                'event_label': 'Windows EXE v1.0.5'
             });
         }
         
-        // استخدام حرف v صغير v1.0.3 المطابق لوسم GitHub المعتمد
-        const downloadUrl = "https://github.com/ehabamr062-ux/Bayan-Pos-System/releases/download/v1.0.3/Bayan.POS.Setup.1.0.3.exe";
+        // استخدام حرف v صغير v1.0.5 المطابق لوسم GitHub المعتمد
+        const downloadUrl = "https://github.com/ehabamr062-ux/Bayan-Pos-System/releases/download/v1.0.5/Bayan.POS.Setup.1.0.5.exe";
 
         // تنزيل الملف المباشر فوراً لمنع أي صفحة 404 جديدة
         window.location.href = downloadUrl;
@@ -324,16 +324,31 @@ window.startDownload = function (event, platform) {
 
 // --- Preloader & Scroll Reveal Animations ---
 document.addEventListener("DOMContentLoaded", () => {
-    // 1. Preloader logic
+    // 1. Preloader logic — hide after logo loads, don't wait for all page images
     const preloader = document.getElementById('preloader');
     if (preloader) {
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                preloader.style.opacity = '0';
-                preloader.style.visibility = 'hidden';
-            }, 600); // Slight delay for smooth logo pulse effect
-        });
+        const logoImg = preloader.querySelector('img');
+
+        const hidePreloader = () => {
+            preloader.style.opacity = '0';
+            preloader.style.visibility = 'hidden';
+        };
+
+        if (logoImg) {
+            if (logoImg.complete) {
+                // Logo already cached — hide immediately after short animation
+                setTimeout(hidePreloader, 300);
+            } else {
+                // Wait only for logo to load, not the whole page
+                logoImg.addEventListener('load', () => setTimeout(hidePreloader, 300));
+                // Safety fallback: hide after 2.5s max regardless
+                setTimeout(hidePreloader, 2500);
+            }
+        } else {
+            setTimeout(hidePreloader, 300);
+        }
     }
+
 
     // 2. Add 'reveal-up' class to all main sections dynamically
     const elementsToReveal = document.querySelectorAll('.feature-card, .price-card, .screen-card, .faq-item, .section-title, .timeline-item, .hero-content, .cta-content');

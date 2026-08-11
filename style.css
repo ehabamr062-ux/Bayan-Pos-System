@@ -1995,6 +1995,27 @@ body:not(.light-mode) .hero-badge-v2 .badge-date {
     border-color: rgba(251, 191, 36, 0.3);
 }
 
+body.light-mode .timeline-details p,
+body.light-mode .timeline-details ul,
+body.light-mode .timeline-details li {
+    color: #1e293b !important;
+}
+
+body:not(.light-mode) .timeline-details p,
+body:not(.light-mode) .timeline-details ul,
+body:not(.light-mode) .timeline-details li {
+    color: #cbd5e1 !important;
+}
+
+body:not(.light-mode) .timeline-details div[style*="background: rgba("] {
+    background: rgba(255, 255, 255, 0.04) !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+body:not(.light-mode) .timeline-details h4 {
+    color: #38bdf8 !important;
+}
+
 /* Mobile Optimization Refinements for Android & Mobile Browsers */
 @media (max-width: 768px) {
     .hero-badge-v2 {
@@ -2082,6 +2103,36 @@ body:not(.light-mode) .hero-badge-v2 .badge-date {
     }
     .faq-item.active .faq-answer {
         padding: 14px 14px;
+    }
+
+    /* تحسينات الأندرويد والشاشات الصغيرة Mobile Optimization */
+    #androidUnavailableModal > div {
+        padding: 20px 16px !important;
+        border-radius: 18px !important;
+        max-height: 90vh !important;
+        overflow-y: auto !important;
+    }
+    #androidUnavailableModal div[style*="display:flex; align-items:center; gap:24px;"] {
+        flex-direction: column !alignment: center;
+        gap: 15px !important;
+    }
+    #androidUnavailableModal div[style*="width:1px;"] {
+        display: none !important;
+    }
+    #androidUnavailableModal div[style*="text-align:center; flex-shrink:0;"] {
+        min-width: 100% !important;
+    }
+    .video-card-item {
+        flex: 1 1 100% !important;
+        max-width: 100% !important;
+    }
+    .hero h1 {
+        font-size: 1.8rem !important;
+        line-height: 1.4 !important;
+    }
+    .container {
+        padding-left: 15px !important;
+        padding-right: 15px !important;
     }
 }
 

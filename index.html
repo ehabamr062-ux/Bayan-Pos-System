@@ -5,9 +5,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bayan POS | نظام الكاشير وإدارة الأعمال الأقوى</title>
-    <link rel="stylesheet" href="style.css?v=3">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css?v=1.0.5">
+
+    <!-- Preconnect for faster external resource loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+
+    <!-- Google Fonts: non-blocking load -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800;900&display=swap"></noscript>
+
+    <!-- Font Awesome: non-blocking load -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+
+    <!-- Preload critical logo image -->
+    <link rel="preload" href="images/bayan_logo.png" as="image">
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-M8Q3DVTP42"></script>
@@ -64,10 +78,10 @@
                 <div class="hero-badge-v2">
                     <div class="badge-chip">
                         <span class="chip-dot"></span>
-                        <span>تحديث جديد v1.0.3</span>
+                        <span>تحديث جديد v1.0.5</span>
                     </div>
                     <span class="badge-text">النسخة المستقرة متاحة الآن 🚀</span>
-                    <span class="badge-date"><i class="fa-regular fa-clock"></i> 26/7/2026</span>
+                    <span class="badge-date"><i class="fa-regular fa-clock"></i> 12/8/2026</span>
                 </div>
                 <h1><span class="gold-title">نظام كاشير وإدارة أعمال</span> <span>متكامل واحترافي</span></h1>
                 <p>إدارة مبيعاتك، مخازنك، حسابات الموردين والعملاء، وتقارير أرباحك في مكان واحد. Bayan POS هو خيارك
@@ -78,7 +92,7 @@
                         <div style="display: flex; flex-direction: column; text-align: right; line-height: 1.3;">
                             <span style="font-weight: 900; font-size: 1.1rem;">تحميل نسخة الويندوز المستقرة 💻</span>
                             <span style="font-size: 0.82rem; font-weight: 800; color: #fbbf24; display: flex; align-items: center; gap: 6px;">
-                                حجم البرنامج: 85 ميجابايت • v1.0.3
+                                حجم البرنامج: 87 ميجابايت • v1.0.5
                             </span>
                         </div>
                     </a>
@@ -334,7 +348,7 @@
                 </div>
                 <div class="price-card">
                     <div class="plan-name">🌱 الباقة الشهرية</div>
-                    <div class="plan-price">200<span>ج.م / شهرياً</span></div>
+                    <div class="plan-price">100<span>ج.م / شهرياً</span></div>
                     <ul class="plan-features">
                         <li><i class="fa-solid fa-check"></i> إدارة مبيعات ومشتريات احترافية</li>
                         <li><i class="fa-solid fa-check"></i> عدد فواتير غير محدود ♾️</li>
@@ -350,7 +364,7 @@
                 </div>
                 <div class="price-card">
                     <div class="plan-name">🚀 الباقة السنوية</div>
-                    <div class="plan-price">1500<span>ج.م / سنوياً</span></div>
+                    <div class="plan-price">1000<span>ج.م / سنوياً</span></div>
                     <ul class="plan-features">
                         <li><i class="fa-solid fa-check"></i> كافة مميزات الباقة الأساسية</li>
                         <li><i class="fa-solid fa-check"></i> عدد فواتير غير محدود ♾️</li>
@@ -360,13 +374,13 @@
                                 style="font-size: 0.8rem; background: #ff9800; color: #fff; padding: 2px 6px; border-radius: 5px;">قريباً</span>
                         </li>
                         <li><i class="fa-solid fa-check"></i> نسخ احتياطي تلقائي</li>
-                        <li><i class="fa-solid fa-check"></i> 💰 خصم مميز: وفر أكثر من 900 جنيه!</li>
+                        <li><i class="fa-solid fa-check"></i> 💰 خصم مميز: وفر أكثر من 200 جنيه!</li>
                     </ul>
                     <a href="#download" class="btn-primary">اشترك الآن</a>
                 </div>
                 <div class="price-card">
                     <div class="plan-name">👑 الباقة مدى الحياة</div>
-                    <div class="plan-price">3800<span>ج.م / مـدى الحـيـاة</span></div>
+                    <div class="plan-price"><span style="text-decoration: line-through; color: #94a3b8; font-size: 1.2rem; margin-left: 8px;">2500</span>2000<span>ج.م / مـدى الحـيـاة</span></div>
                     <ul class="plan-features">
                         <li><i class="fa-solid fa-check"></i> امتلاك البرنامج للأبد (بدون اشتراك)</li>
                         <li><i class="fa-solid fa-check"></i> عدد فواتير غير محدود ♾️</li>
@@ -397,7 +411,7 @@
                         <div style="display: flex; flex-direction: column; text-align: right; line-height: 1.3;">
                             <span style="font-weight: 900; font-size: 1.1rem; color: #ffffff;">تحميل لنظام ويندوز 💻</span>
                             <span style="font-size: 0.82rem; font-weight: 800; color: #fbbf24; display: flex; align-items: center; gap: 6px;">
-                                حجم البرنامج: 85 ميجابايت • v1.0.3
+                                حجم البرنامج: 87 ميجابايت • v1.0.5
                             </span>
                         </div>
                     </a>
@@ -553,18 +567,142 @@
                     </h3>
 
                     <div class="timeline">
-                        <!-- 1. Latest Release: v1.0.3 Today (26 July 2026) -->
+                        <!-- 1. Latest Release: v1.0.5 Today (12 August 2026) -->
                         <div class="timeline-item active collapsible-timeline open" style="border-right: 4px solid #10b981;">
                             <div class="timeline-dot" style="background: #10b981;">
-                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-rocket"></i>
                             </div>
                             <div class="timeline-content">
                                 <div class="timeline-header" onclick="toggleTimelineItem(this)">
                                     <div style="flex:1;">
-                                        <div class="timeline-date" style="color: #10b981; font-weight: bold;">تم الإصدار اليوم (26 يوليو 2026 - الإصدار 1.0.3 الأحدث) 🌟</div>
-                                        <h3 style="color: #10b981; margin: 0; font-size: 1.25rem;">الإصدار v1.0.3 - التحديث المستقر وتحديثات المتصفح ⚡</h3>
+                                        <div class="timeline-date" style="color: #10b981; font-weight: bold;">تم الإصدار اليوم (12 أغسطس 2026 - الإصدار 1.0.5 الأحدث) 🌟</div>
+                                        <h3 style="color: #10b981; margin: 0; font-size: 1.25rem;">الإصدار v1.0.5 (12/08/2026) - قم بجميع الإصلاحات والتحسينات في التطبيق وحل تعارضات البيانات ⚡</h3>
                                     </div>
                                     <div class="timeline-toggle-btn" style="color: #10b981;"><i class="fa-solid fa-chevron-down"></i></div>
+                                </div>
+                                <div class="timeline-details">
+                                    <p style="font-weight: bold; color: #334155; margin-top: 10px; margin-bottom: 12px;">سجل التعديلات والتحسينات في الإصدار الحالي (v1.0.5):</p>
+                                    
+                                    <div style="display: flex; flex-direction: column; gap: 10px;">
+                                        <div style="background: rgba(16, 185, 129, 0.06); border: 1px solid rgba(16, 185, 129, 0.2); border-radius: 10px; padding: 10px 14px;">
+                                            <h4 style="margin: 0 0 6px 0; color: #059669; font-size: 0.95rem;">📦 1. قسم البضاعة والمخزن (Inventory & Products)</h4>
+                                            <ul style="margin: 0; padding-right: 18px; font-size: 0.88rem; color: #334155; line-height: 1.6;">
+                                                <li>إصلاح وتدقيق معكوسات رصيد المخزون عند تعديل أو حذف الفواتير المرتجعة.</li>
+                                                <li>استبعاد حركات مرتجع المشتريات من تقرير وتصفية آخر سعر شراء من المورد لضمان دقة التكلفة.</li>
+                                            </ul>
+                                        </div>
+
+                                        <div style="background: rgba(59, 130, 246, 0.06); border: 1px solid rgba(59, 130, 246, 0.2); border-radius: 10px; padding: 10px 14px;">
+                                            <h4 style="margin: 0 0 6px 0; color: #2563eb; font-size: 0.95rem;">👥 2. قسم الحسابات والعملاء والموردين (Accounts & Customer Ledger)</h4>
+                                            <ul style="margin: 0; padding-right: 18px; font-size: 0.88rem; color: #334155; line-height: 1.6;">
+                                                <li>تفعيل ودعم دالة <code>deleteInvoiceGlobal</code> لحذف الفواتير من كشف الحساب وتعديل رصيد العميل تلقائياً.</li>
+                                                <li>ضبط حسابات مديونية العملاء والموردين بدقة عند إلغاء أو تعديل الفواتير الآجلة والنقدية.</li>
+                                            </ul>
+                                        </div>
+
+                                        <div style="background: rgba(245, 158, 11, 0.06); border: 1px solid rgba(245, 158, 11, 0.2); border-radius: 10px; padding: 10px 14px;">
+                                            <h4 style="margin: 0 0 6px 0; color: #d97706; font-size: 0.95rem;">🖨️ 3. قسم الطباعة والمعاينة الفورية (Printing & Thermal/A4 Preview)</h4>
+                                            <ul style="margin: 0; padding-right: 18px; font-size: 0.88rem; color: #334155; line-height: 1.6;">
+                                                <li>تحصين محرك الطباعة بـ <code>parseFloat</code> لضمان عدم توقف الفواتير الحرارية والـ A4 بـ TypeError.</li>
+                                                <li>ضبط معالجة السعر الإجمالي والوحدة في شاشات الطباعة والمعاينة الفورية.</li>
+                                            </ul>
+                                        </div>
+
+                                        <div style="background: rgba(236, 72, 153, 0.06); border: 1px solid rgba(236, 72, 153, 0.2); border-radius: 10px; padding: 10px 14px;">
+                                            <h4 style="margin: 0 0 6px 0; color: #db2777; font-size: 0.95rem;">🗑️ 4. قسم سلة المحذوفات الذكية (Smart Recycle Bin)</h4>
+                                            <ul style="margin: 0; padding-right: 18px; font-size: 0.88rem; color: #334155; line-height: 1.6;">
+                                                <li>تطوير دالة <code>trashManager.restore</code> لإعادة تطبيق التغيرات على كميات المنتجات بالمخزن فور استعادة أي فاتورة محذوفة.</li>
+                                                <li>المزامنة الفورية لجدول المحذوفات وتحديث رصيد الأصناف بالـ Store.</li>
+                                            </ul>
+                                        </div>
+
+                                        <div style="background: rgba(139, 92, 246, 0.06); border: 1px solid rgba(139, 92, 246, 0.2); border-radius: 10px; padding: 10px 14px;">
+                                            <h4 style="margin: 0 0 6px 0; color: #7c3aed; font-size: 0.95rem;">💰 5. قسم المالية والخزينة (Treasury & Cashbox)</h4>
+                                            <ul style="margin: 0; padding-right: 18px; font-size: 0.88rem; color: #334155; line-height: 1.6;">
+                                                <li>حماية مصفوفة سندات القبض وسندات الصرف لمنع تكرار القيد أو ازدواجية الخصم.</li>
+                                                <li>مزامنة تتبع الرصيد النقدي والتدفقات الأرباح بشكل لحظي ومباشر.</li>
+                                            </ul>
+                                        </div>
+
+                                        <div style="background: rgba(20, 184, 166, 0.06); border: 1px solid rgba(20, 184, 166, 0.2); border-radius: 10px; padding: 10px 14px;">
+                                            <h4 style="margin: 0 0 6px 0; color: #0d9488; font-size: 0.95rem;">🛒 6. قسم المبيعات والكاشير (Sales & POS Engine)</h4>
+                                            <ul style="margin: 0; padding-right: 18px; font-size: 0.88rem; color: #334155; line-height: 1.6;">
+                                                <li>إضافة حماية <code>try-finally</code> لمنع تجمد وتوقف زر الحفظ عند تكرار النقر السريع (Race Conditions).</li>
+                                                <li>تسريع أداء إدخال الأصناف وتحديث إجمالي الفاتورة لحظياً.</li>
+                                            </ul>
+                                        </div>
+
+                                        <div style="background: rgba(244, 63, 94, 0.06); border: 1px solid rgba(244, 63, 94, 0.2); border-radius: 10px; padding: 10px 14px;">
+                                            <h4 style="margin: 0 0 6px 0; color: #e11d48; font-size: 0.95rem;">🚚 7. قسم التحويلات والتسويات المخزنية (Store Transfers & Stock Adjustments)</h4>
+                                            <ul style="margin: 0; padding-right: 18px; font-size: 0.88rem; color: #334155; line-height: 1.6;">
+                                                <li>تفعيل فحص رصيد المخزن المصدر ومنع التحويل المجمع في حال عدم كفاية الكمية.</li>
+                                                <li>تحديث الجدول التجميعي للتحويلات وطباعة إذن التحويل المخزني بالتأثير المزدوج.</li>
+                                            </ul>
+                                        </div>
+
+                                        <div style="background: rgba(168, 85, 247, 0.06); border: 1px solid rgba(168, 85, 247, 0.2); border-radius: 10px; padding: 10px 14px;">
+                                            <h4 style="margin: 0 0 6px 0; color: #9333ea; font-size: 0.95rem;">📊 8. قسم إدارة الأسعار وهامش الربح (Price Tracking & Margins)</h4>
+                                            <ul style="margin: 0; padding-right: 18px; font-size: 0.88rem; color: #334155; line-height: 1.6;">
+                                                <li>إضافة فحص أمان <code>isFinite</code> لمنع ظهور NaN% أو Infinity% عند حساب هامش الربح للأصناف مجانية التكلفة.</li>
+                                                <li>مزامنة تحديث أسعار الجملة والقطاعي عبر شاشات العرض والتنقل الفوري.</li>
+                                            </ul>
+                                        </div>
+
+                                        <div style="background: rgba(99, 102, 241, 0.06); border: 1px solid rgba(99, 102, 241, 0.2); border-radius: 10px; padding: 10px 14px;">
+                                            <h4 style="margin: 0 0 6px 0; color: #4f46e5; font-size: 0.95rem;">🛡️ 9. قسم الأمان والحماية والتراخيص (Licensing & Security Guard)</h4>
+                                            <ul style="margin: 0; padding-right: 18px; font-size: 0.88rem; color: #334155; line-height: 1.6;">
+                                                <li>حماية ساعة وتاريخ الجهاز ضد التراجع الزمني من خلال نظام <code>bayan_max_seen_timestamp</code>.</li>
+                                                <li>تشفير البيانات المرجعية للترخيص ومنع التعديل المباشر من الأدوات الخارجية.</li>
+                                            </ul>
+                                        </div>
+
+                                        <div style="background: rgba(14, 165, 233, 0.06); border: 1px solid rgba(14, 165, 233, 0.2); border-radius: 10px; padding: 10px 14px;">
+                                            <h4 style="margin: 0 0 6px 0; color: #0284c7; font-size: 0.95rem;">⚡ 10. قسم الأداء وسرعة المحرك المحلي (Performance & Database Optimization)</h4>
+                                            <ul style="margin: 0; padding-right: 18px; font-size: 0.88rem; color: #334155; line-height: 1.6;">
+                                                <li>تحسين استعلامات Dexie.js وتحميل البيانات بالتوازي عند تشغيل التطبيق.</li>
+                                                <li>تقليل استهلاك الذاكرة وحجب أدوات DevTools اختصاراً على بيئة Electron المحدثة.</li>
+                                            </ul>
+                                        </div>
+
+                                        <div style="background: rgba(16, 185, 129, 0.06); border: 1px solid rgba(16, 185, 129, 0.2); border-radius: 10px; padding: 10px 14px;">
+                                            <h4 style="margin: 0 0 6px 0; color: #059669; font-size: 0.95rem;">📑 11. قسم التصدير والاستيراد (PDF & Excel Import & Export Engine)</h4>
+                                            <ul style="margin: 0; padding-right: 18px; font-size: 0.88rem; color: #334155; line-height: 1.6;">
+                                                <li>تأمين مكتبة XLSX مع نظام استرجاع تلقائي متعدد المستويات للحفاظ على اللغة العربية والتنسيق.</li>
+                                                <li>ضمان توافق التصدير عبر بيئة Windows والتنزيل التلقائي.</li>
+                                            </ul>
+                                        </div>
+
+                                        <div style="background: rgba(59, 130, 246, 0.06); border: 1px solid rgba(59, 130, 246, 0.2); border-radius: 10px; padding: 10px 14px;">
+                                            <h4 style="margin: 0 0 6px 0; color: #2563eb; font-size: 0.95rem;">🔄 12. قسم التحديثات وتوحيد رقم الإصدار (Single Source of Truth v1.0.5)</h4>
+                                            <ul style="margin: 0; padding-right: 18px; font-size: 0.88rem; color: #334155; line-height: 1.6;">
+                                                <li>توحيد رقم الإصدار v1.0.5 كاملاً عبر كافة ملفات النظام (package.json, version.json, core.js, utils.js, والـ UI).</li>
+                                                <li>إدراج سجل التحديثات المطور القابل للطي والتنقل المباشر.</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <div class="timeline-tags" style="margin-top: 14px;">
+                                        <span style="background: rgba(16,185,129,0.15); color: #10b981;">الإصدار الأحدث v1.0.5</span>
+                                        <span style="background: rgba(16,185,129,0.15); color: #10b981;">استقرار البيانات</span>
+                                        <span style="background: rgba(16,185,129,0.15); color: #10b981;">الطباعة والمخازن</span>
+                                        <span style="background: rgba(16,185,129,0.15); color: #10b981;">سلة المحذوفات الذكية</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 2. Release: v1.0.3 (26 July 2026) -->
+                        <div class="timeline-item active collapsible-timeline" style="margin-top: 20px;">
+                            <div class="timeline-dot" style="background: #3b82f6;">
+                                <i class="fa-solid fa-code-commit"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <div class="timeline-header" onclick="toggleTimelineItem(this)">
+                                    <div style="flex:1;">
+                                        <div class="timeline-date" style="color: #3b82f6; font-weight: bold;">تم الإصدار (26 يوليو 2026 - الإصدار 1.0.3) ⚡</div>
+                                        <h3 style="color: #3b82f6; margin: 0; font-size: 1.25rem;">الإصدار v1.0.3 - التحديث المستقر وتحديثات المتصفح ⚡</h3>
+                                    </div>
+                                    <div class="timeline-toggle-btn" style="color: #3b82f6;"><i class="fa-solid fa-chevron-down"></i></div>
                                 </div>
                                 <div class="timeline-details">
                                     <p style="font-weight: bold; color: #334155; margin-top: 10px; margin-bottom: 8px;">أبرز التحسينات في هذا الإصدار:</p>
@@ -574,9 +712,8 @@
                                         <li style="margin-bottom: 6px;">⚡ <strong>استقرار النظام:</strong> تحسين الكفاءة العامة واستجابة واجهات البرنامج.</li>
                                     </ul>
                                     <div class="timeline-tags" style="margin-top: 10px;">
-                                        <span style="background: rgba(16,185,129,0.15); color: #10b981;">الإصدار الأحدث</span>
-                                        <span style="background: rgba(16,185,129,0.15); color: #10b981;">الوضع الفاتح</span>
-                                        <span style="background: rgba(16,185,129,0.15); color: #10b981;">منع الكاش</span>
+                                        <span style="background: rgba(59,130,246,0.15); color: #3b82f6;">الوضع الفاتح</span>
+                                        <span style="background: rgba(59,130,246,0.15); color: #3b82f6;">منع الكاش</span>
                                     </div>
                                 </div>
                             </div>
@@ -750,113 +887,56 @@
         <span class="close-modal">&times;</span>
         <img class="modal-content" id="expandedImg">
     </div>
+    </div>
 
-    <!-- نافذة التسجيل قبل التحميل (Registration Modal) -->
-    <div id="downloadModal" class="download-modal-overlay">
-        <div class="download-modal-card">
-            <div class="download-modal-header">
-                <h3>👤 تسجيل بيانات التحميل</h3>
-                <span class="close-download-modal">&times;</span>
-            </div>
-            <form id="registrationForm" onsubmit="handleRegistrationSubmit(event)">
-                <div class="form-group">
-                    <label for="regName">الاسم بالكامل 👤</label>
-                    <input type="text" id="regName" required placeholder="أدخل اسمك الثنائي أو الثلاثي">
-                </div>
-                <div class="form-group">
-                    <label for="regPhone">رقم الهاتف / الواتساب 📱</label>
-                    <input type="tel" id="regPhone" required pattern="[0-9]{11}" minlength="11" maxlength="11"
-                        title="يجب أن يتكون رقم الهاتف من 11 رقماً فقط" placeholder="مثال: 01006825905">
-                </div>
-                <div class="form-group">
-                    <label for="regBusinessType">نوع النشاط التجاري 🛒</label>
-                    <select id="regBusinessType" required>
-                        <option value="" disabled selected>اختر نوع نشاطك</option>
-                        <option value="سوبر ماركت">سوبر ماركت / بقالة</option>
-                        <option value="محل ملابس">محل ملابس / أحذية</option>
-                        <option value="مطعم / كافيه">مطعم / كافيه</option>
-                        <option value="صيدلية">صيدلية</option>
-                        <option value="محل أجهزة / إلكترونيات">محل أجهزة / إلكترونيات</option>
-                        <option value="محل أدوات منزلية">محل أدوات منزلية</option>
-                        <option value="أخرى">نشاط تجاري آخر</option>
-                    </select>
-                </div>
-                <button type="submit" class="submit-download-btn">
-                    إرسال البيانات واستمرار 🚀
-                </button>
-            </form>
+    <!-- نموذج التسجيل قبل التحميل (Registration Modal) -->
+    <div id="downloadModal" class="download-modal-overlay"></div>
 
-            <!-- شاشة اختيار النسخة (تظهر بعد نجاح التسجيل) -->
-            <div id="downloadSelection" class="download-selection" style="display: none;">
-                <h4>✅ تم تسجيل بياناتك بنجاح!</h4>
-                <p>اختر النسخة التي تود تحميلها الآن لتناسب جهازك:</p>
-                <div class="platform-buttons">
-                    <a href="#" class="platform-btn windows-btn" onclick="startDownload(event, 'windows')"
-                        style="display: flex; align-items: center; gap: 15px; padding: 15px; background: rgba(16, 185, 129, 0.1); border: 2px solid #10b981; border-radius: 12px; color: #fff; text-decoration: none; transition: 0.3s; margin-bottom: 15px;">
-                        <i class="fa-brands fa-windows" style="font-size: 2.5rem; color: #00a4ef;"></i>
-                        <div style="text-align: right;">
-                            <div style="font-weight: 900; font-size: 1.1rem; color: #10b981; margin-bottom: 2px;">تحميل
-                                لنظام ويندوز 🌟 (توصية مؤكدة)</div>
-                            <div style="font-size: 0.9rem; color: #cbd5e1; margin-bottom: 2px;">الإصدار 1.0.3 المستقر 100% (64-bit) • بحجم 85 ميجابايت</div>
-                            <div style="font-size: 0.85rem; color: #fbbf24; font-weight: bold;">يعمل بدون إنترنت +
-                                تحديثات تلقائية دورية</div>
-                        </div>
-                    </a>
-                    <div onclick="showAndroidUnavailable()"
-                        style="display: flex; align-items: center; gap: 15px; padding: 15px; background: linear-gradient(135deg, #1e1b4b, #0f172a); border: 2px solid #ff9800; border-radius: 12px; color: #fff; cursor: pointer; transition: 0.3s; box-shadow: 0 6px 20px rgba(255, 152, 0, 0.25);">
-                        <i class="fa-brands fa-android" style="font-size: 2.5rem; color: #3DDC84;"></i>
-                        <div style="text-align: right;">
-                            <div style="font-weight: 900; font-size: 1.1rem; color: #ff9800; margin-bottom: 2px;">نسخة الأندرويد 🧪</div>
-                            <div style="font-size: 0.88rem; color: #ffffff; font-weight: 800;">متوقفة مؤقتاً • الإطلاق 15/9/2026 📅</div>
-                            <div style="font-size: 0.8rem; color: #fbbf24;">اضغط لمعرفة موعد وتفاصيل الإطلاق 🚀</div>
-                        </div>
+    <!-- نافذة تنبيه الأندرويد -->
+    <div id="androidUnavailableModal" class="android-modal-wrapper"
+        style="display:none; position:fixed; inset:0; z-index:99999; background:rgba(0,0,0,0.8); backdrop-filter:blur(12px); justify-content:center; align-items:center; padding:16px; box-sizing:border-box;">
+        <div class="android-modal-card"
+            style="background: linear-gradient(145deg, #1a1025, #0f0c1a); border: 2px solid rgba(255,152,0,0.45); border-radius: 24px; max-width: 680px; width: 100%; padding: 24px 22px; position: relative; box-shadow: 0 0 60px rgba(255,152,0,0.2), 0 25px 60px rgba(0,0,0,0.8); animation: slideUp 0.35s cubic-bezier(0.175,0.885,0.32,1.275); max-height: 90vh; overflow-y: auto; box-sizing:border-box;">
+            <!-- زر الإغلاق -->
+            <span onclick="document.getElementById('androidUnavailableModal').style.display='none'"
+                style="position:absolute; top:12px; left:16px; font-size:24px; cursor:pointer; color:#94a3b8; transition:0.2s; line-height:1; z-index:10;"
+                onmouseover="this.style.color='#ef4444'" onmouseout="this.style.color='#94a3b8'">&times;</span>
+            
+            <div class="android-modal-body" style="display:flex; flex-direction:column; gap:16px;">
+                <!-- الهيدر العلوي في الهاتف -->
+                <div style="display:flex; align-items:center; gap:14px; background:rgba(255,152,0,0.08); border:1px solid rgba(255,152,0,0.25); padding:12px 16px; border-radius:16px;">
+                    <div style="font-size:2.4rem; line-height:1;">📱</div>
+                    <div style="flex:1; text-align:right;">
+                        <div style="font-size:1.1rem; font-weight:900; color:#ff9800;">نسخة الأندرويد والهواتف الذكية</div>
+                        <div style="font-size:0.82rem; color:#94a3b8; font-weight:700;">جاري التطوير والتجهيز للإطلاق 15/9/2026 📅</div>
+                    </div>
+                </div>
+
+                <!-- المحتوى والتفاصيل -->
+                <div style="text-align:right;">
+                    <p style="font-size:0.92rem; color:#e2e8f0; line-height:1.7; margin-bottom:10px;">
+                        نحيطكم علماً بأن فريق تطوير <strong style="color:#fbbf24;">Bayan POS يعمل حالياً بكامل طاقته على تطوير وتحديث النسخة المخصصة للهواتف الذكية وأجهزة الأندرويد 📱</strong>.
+                    </p>
+                    <p style="font-size:0.88rem; color:#cbd5e1; line-height:1.65; margin-bottom:14px;">
+                        تم تعليق التحميل مؤقتاً لإضافة خصائص الربط السحابي المباشر والمزامنة اللحظية بين الكاشير والمخازن والهاتف، لضمان أقصى مستويات السرعة والأمان.
+                        سوف يتم <strong style="color:#ff9800; font-size:0.95rem;">إطلاق النسخة الرسمية رسمياً يوم 15 سبتمبر 2026 (15/9/2026) 📅</strong> بإذن الله.
+                    </p>
+
+                    <div style="background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.25); border-radius: 14px; padding: 12px 14px; margin-bottom:16px;">
+                        <div style="font-size:0.88rem; color:#10b981; font-weight:900; margin-bottom:4px;">💡 هل تود بدء العمل والتجربة فوراً؟</div>
+                        <div style="font-size:0.82rem; color:#94a3b8; line-height:1.5;">يمكنك استخدام وتجربة <strong style="color:#10b981;">نسخة الويندوز v1.0.5 المستقرة 💻</strong> على جهاز الكمبيوتر الخاص بك، والتي تحتوي على كافة المميزات والتقارير وتعمل 100% بدون إنترنت.</div>
+                    </div>
+
+                    <div style="display:flex; flex-direction:column; gap:10px;">
+                        <button onclick="document.getElementById('androidUnavailableModal').style.display='none'; const winBtn = document.querySelector('.download-btn[data-platform=\'windows\']'); if(winBtn) winBtn.click();"
+                            style="width:100%; padding:13px; border-radius:12px; border:none; background:linear-gradient(135deg,#10b981,#059669); color:#ffffff; font-weight:900; font-size:0.95rem; cursor:pointer; font-family:'Cairo',sans-serif; transition:0.3s; box-shadow:0 6px 20px rgba(16,185,129,0.3);"
+                            onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1'">تحميل نسخة الويندوز v1.0.5 💻</button>
+                        <button onclick="document.getElementById('androidUnavailableModal').style.display='none'"
+                            style="width:100%; padding:11px; border-radius:12px; border:1px solid rgba(255,255,255,0.15); background:transparent; color:#94a3b8; font-weight:800; font-size:0.9rem; cursor:pointer; font-family:'Cairo',sans-serif; transition:0.3s;"
+                            onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#94a3b8'">إغلاق النافذة</button>
                     </div>
                 </div>
             </div>
-
-            <!-- شاشة تحذير الأندرويد (بدون رابط) -->
-            <div id="androidWarning" class="download-selection" style="display: none; text-align: center;">
-            </div>
-        </div>
-    </div>
-
-    <!-- نافذة الأندرويد غير متاحة حالياً -->
-    <div id="androidUnavailableModal"
-        style="display:none; position:fixed; inset:0; z-index:99999; background:rgba(0,0,0,0.75); backdrop-filter:blur(10px); justify-content:center; align-items:center;">
-        <div
-            style="background: linear-gradient(145deg, #1a1025, #0f0c1a); border: 2px solid rgba(255,152,0,0.45); border-radius: 24px; max-width: 430px; width: 92%; padding: 35px 30px; text-align: center; position: relative; box-shadow: 0 0 60px rgba(255,152,0,0.2), 0 25px 60px rgba(0,0,0,0.8); animation: slideUp 0.35s cubic-bezier(0.175,0.885,0.32,1.275);">
-            <!-- زر الإغلاق -->
-            <span onclick="document.getElementById('androidUnavailableModal').style.display='none'"
-                style="position:absolute; top:15px; left:18px; font-size:22px; cursor:pointer; color:#94a3b8; transition:0.2s; line-height:1;"
-                onmouseover="this.style.color='#ef4444'" onmouseout="this.style.color='#94a3b8'">&times;</span>
-            <!-- الأيقونة والعنوان -->
-            <div style="font-size:3.5rem; margin-bottom:12px;">🚧</div>
-            <h3
-                style="font-size:1.4rem; font-weight:900; color:#ff9800; margin-bottom:10px; text-shadow: 0 0 15px rgba(255,152,0,0.4);">
-                نسخة الأندرويد متوقفة مؤقتاً</h3>
-            <p style="font-size:0.98rem; color:#cbd5e1; line-height:1.75; margin-bottom:20px;">
-                نسخة الأندرويد حالياً <strong style="color:#fbbf24;">قيد التطوير وإصلاح بعض الأخطاء</strong>،<br>
-                وذلك لضمان أفضل تجربة ممكنة قبل الإطلاق الرسمي.<br><br>
-                نعمل بجد على إطلاق <strong style="color:#10b981;">نسخة مستقرة واحترافية 100%</strong><br>قريباً بإذن
-                الله.
-            </p>
-            <!-- موعد الإطلاق -->
-            <div
-                style="background: rgba(255,152,0,0.1); border: 1px solid rgba(255,152,0,0.25); border-radius: 12px; padding: 14px 18px; margin-bottom: 22px;">
-                <div style="font-size:0.85rem; color:#94a3b8; margin-bottom:4px;">موعد الإطلاق المتوقع</div>
-                <div style="font-size:1.5rem; font-weight:900; color:#ff9800; letter-spacing:1px;">15 / 9 / 2026</div>
-            </div>
-            <!-- توصية الويندوز -->
-            <div
-                style="background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.25); border-radius: 12px; padding: 12px 16px; margin-bottom: 22px; text-align:right;">
-                <div style="font-size:0.88rem; color:#10b981; font-weight:700; margin-bottom:4px;">💡 هل تريد البدء
-                    الآن؟</div>
-                <div style="font-size:0.85rem; color:#94a3b8;">نوصيك بتحميل <strong style="color:#10b981;">نسخة الويندوز v1.0.3</strong> المستقرة والعملية 100% بدون إنترنت.</div>
-            </div>
-            <!-- زر الإغلاق -->
-            <button onclick="document.getElementById('androidUnavailableModal').style.display='none'"
-                style="width:100%; padding:13px; border-radius:12px; border:none; background:linear-gradient(135deg,#ff9800,#f59e0b); color:#1a1025; font-weight:900; font-size:1rem; cursor:pointer; font-family:'Cairo',sans-serif; transition:0.3s;"
-                onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">حسناً، فهمت ✅</button>
         </div>
     </div>
 
@@ -868,7 +948,7 @@
         <i class="fa-solid fa-arrow-up"></i>
     </button>
 
-    <script src="script.js"></script>
+    <script src="script.js?v=1.0.5"></script>
 </body>
 
 </html>
