@@ -178,77 +178,126 @@ if (modal && modalImg && closeBtn) {
     });
 }
 
-// --- نظام التسجيل قبل التحميل (Registration Modal Logic) ---
-const downloadModal = document.getElementById("downloadModal");
-const closeDownloadBtn = document.querySelector(".close-download-modal");
-const downloadButtons = document.querySelectorAll(".download-btn");
-const registrationForm = document.getElementById("registrationForm");
-const downloadSelection = document.getElementById("downloadSelection");
+// --- نظام التسجيل والتحميل الذكي (Smart Registration System) ---
+document.addEventListener("DOMContentLoaded", function () {
+    const downloadModal = document.getElementById("downloadModal");
+    const closeDownloadBtn = document.querySelector(".close-download-modal");
+    const downloadButtons = document.querySelectorAll(".download-btn");
 
-function resetDownloadModal() {
-    if (registrationForm) {
-        registrationForm.reset();
-        registrationForm.style.display = "block";
-    }
-    if (downloadSelection) {
-        downloadSelection.style.display = "none";
-    }
-    const androidWarning = document.getElementById("androidWarning");
-    if (androidWarning) {
-        androidWarning.style.display = "none";
-    }
-}
-
-if (downloadModal && closeDownloadBtn) {
-    // اعتراض ضغطة زر التحميل لعرض النموذج دائماً لكل منصة
-    downloadButtons.forEach(btn => {
-        btn.addEventListener("click", (e) => {
-            e.preventDefault();
-            const platform = btn.getAttribute("data-platform");
-
-            if (platform === 'android') {
-                showAndroidUnavailable();
-                return;
-            }
-
-            window.currentSelectedPlatform = platform;
-
-            // إذا كان المستخدم قد سجل بياناته مسبقاً في هذا المتصفح، يتم التحميل مباشرة بدون نافذة
-            const existingLeads = JSON.parse(localStorage.getItem("bayan_web_leads") || "[]");
-            if (existingLeads.length > 0) {
-                startDownload(e, platform || 'windows');
-                return;
-            }
-
-            // للمستخدمين الجدد لأول مرة فقط: عرض نافذة التسجيل
-            resetDownloadModal();
-            downloadModal.style.display = "flex";
-        });
-    });
-
-    // إغلاق النافذة
-    closeDownloadBtn.addEventListener("click", () => {
-        downloadModal.style.display = "none";
-    });
-
-    window.addEventListener("click", (e) => {
-        if (e.target === downloadModal) {
-            downloadModal.style.display = "none";
+    function showWelcomeToast(userName) {
+        let toast = document.getElementById("welcomeToast");
+        if (!toast) {
+            toast = document.createElement("div");
+            toast.id = "welcomeToast";
+            toast.style.cssText = `
+                position: fixed;
+                top: 25px;
+                left: 50%;
+                transform: translateX(-50%) translateY(-120px);
+                background: linear-gradient(145deg, rgba(30, 27, 46, 0.96), rgba(15, 23, 42, 0.98));
+                border: 1.5px solid rgba(251, 191, 36, 0.6);
+                color: #ffffff;
+                padding: 16px 26px;
+                border-radius: 20px;
+                font-family: 'Cairo', sans-serif;
+                box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(251, 191, 36, 0.35);
+                z-index: 999999;
+                transition: transform 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease;
+                display: flex;
+                align-items: center;
+                gap: 14px;
+                direction: rtl;
+                max-width: 90%;
+                width: max-content;
+                box-sizing: border-box;
+                backdrop-filter: blur(12px);
+                -webkit-backdrop-filter: blur(12px);
+            `;
+            document.body.appendChild(toast);
         }
-    });
-}
+        toast.innerHTML = `
+            <div style="width: 40px; height: 40px; border-radius: 12px; background: linear-gradient(135deg, rgba(16,185,129,0.3), rgba(251,191,36,0.3)); border: 1px solid #fbbf24; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0;">
+                👋
+            </div>
+            <div style="text-align: right; line-height: 1.3;">
+                <div style="font-size: 1rem; font-weight: 900; color: #fbbf24;">مرحباً بك مجدداً يا ${userName}!</div>
+                <div style="font-size: 0.82rem; color: #cbd5e1; font-weight: 700; margin-top: 2px;">جاري بدء تحميل نسختك المستقرة مباشرة... 💻🚀</div>
+            </div>
+        `;
+        toast.style.opacity = "1";
+        requestAnimationFrame(() => {
+            toast.style.transform = "translateX(-50%) translateY(0)";
+        });
+        setTimeout(() => {
+            toast.style.transform = "translateX(-50%) translateY(-120px)";
+            toast.style.opacity = "0";
+        }, 4500);
+    }
 
-// معالجة إرسال النموذج والتحميل
+    if (downloadModal) {
+        downloadButtons.forEach(btn => {
+            btn.addEventListener("click", (e) => {
+                e.preventDefault();
+                const platform = btn.getAttribute("data-platform");
+
+                if (platform === 'android') {
+                    showAndroidUnavailable();
+                    return;
+                }
+
+                window.currentSelectedPlatform = platform || 'windows';
+
+                // فحص الذكاء التلقائي: هل قام المستخدم بالتسجيل سابقاً على هذا الجهاز؟
+                const existingLeads = JSON.parse(localStorage.getItem("bayan_web_leads") || "[]");
+                if (existingLeads.length > 0) {
+                    const lastLead = existingLeads[existingLeads.length - 1];
+                    const userName = lastLead.name ? lastLead.name.split(' ')[0] : 'عزيزي العميل';
+                    
+                    // إشهار رسالة ترحيبية فورية وبدء التحميل المباشر دون فتح النافذة مجدداً
+                    showWelcomeToast(userName);
+                    startDownload(e, window.currentSelectedPlatform);
+                    return;
+                }
+
+                // للمستخدمين الجدد فقط لأول مرة: فتح النافذة المنبثقة الفخمة
+                if (document.getElementById("registrationForm")) {
+                    document.getElementById("registrationForm").reset();
+                }
+                downloadModal.style.display = "flex";
+            });
+        });
+
+        if (closeDownloadBtn) {
+            closeDownloadBtn.addEventListener("click", () => {
+                downloadModal.style.display = "none";
+            });
+        }
+
+        window.addEventListener("click", (e) => {
+            if (e.target === downloadModal) {
+                downloadModal.style.display = "none";
+            }
+        });
+    }
+});
+
+// معالجة إرسال النموذج والتحميل لأول مرة
 window.handleRegistrationSubmit = function (event) {
     event.preventDefault();
 
-    const name = document.getElementById("regName").value;
+    const submitBtn = document.getElementById("submitDownloadBtn");
+    const name = document.getElementById("regName").value.trim();
     const phone = document.getElementById("regPhone").value.trim();
     const businessType = document.getElementById("regBusinessType").value;
 
     const phoneRegex = /^[0-9]{11}$/;
     if (!phoneRegex.test(phone)) {
-        alert("⚠️ يرجى إدخال رقم هاتف صحيح مكون من 11 رقماً فقط.");
+        alert("⚠️ يرجى إدخال رقم هاتف صحيح مكون من 11 رقماً (مثال: 01012345678).");
+        return;
+    }
+
+    if (!businessType) {
+        alert("⚠️ يرجى اختيار نوع النشاط التجاري من القائمة.");
         return;
     }
 
@@ -262,14 +311,19 @@ window.handleRegistrationSubmit = function (event) {
         timestamp: new Date().toISOString()
     };
 
-    console.log("📝 تم تسجيل عميل جديد:", leadData);
+    console.log("📝 تم تسجيل عميل جديد وسيتذكر النظام دخوله:", leadData);
 
-    // 1. حفظ البيانات محلياً كنسخة احتياطية آمنة
+    if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> <span>جاري التسجيل والتحميل...</span>`;
+    }
+
+    // 1. حفظ البيانات محلياً للذاكرة الذكية
     const existingLeads = JSON.parse(localStorage.getItem("bayan_web_leads") || "[]");
     existingLeads.push(leadData);
     localStorage.setItem("bayan_web_leads", JSON.stringify(existingLeads));
 
-    // 2. إرسال البيانات إلى Google Sheets في الخلفية دون تعطيل أو تأخير التحميل المباشر
+    // 2. إرسال البيانات إلى Google Sheets في الخلفية
     const payload = {
         name: name,
         phone: phone,
@@ -282,9 +336,21 @@ window.handleRegistrationSubmit = function (event) {
         mode: "no-cors",
         headers: { "Content-Type": "text/plain" },
         body: JSON.stringify(payload)
-    }).catch(err => console.error("Error sending to Google Sheets:", err));
+    }).catch(err => console.error("Error sending to Google Sheets:", err))
+    .finally(() => {
+        setTimeout(() => {
+            if (submitBtn) {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = `<i class="fa-solid fa-cloud-arrow-down" style="font-size: 1.2rem;"></i> <span>تأكيد وتحميل البرنامج الآن</span>`;
+            }
+        }, 2000);
+    });
 
-    // 3. البدء الفوري في تنزيل الملف لمنع حجب النوافذ المنبثقة من قِبل المتصفحات
+    // 3. إغلاق النافذة وبدء تنزيل الملف فوراً
+    const downloadModal = document.getElementById("downloadModal");
+    if (downloadModal) {
+        downloadModal.style.display = "none";
+    }
     startDownload(event, selectedPlat);
 };
 
@@ -298,12 +364,12 @@ window.startDownload = function (event, platform) {
         if (typeof gtag !== 'undefined') {
             gtag('event', 'download_windows', {
                 'event_category': 'Download',
-                'event_label': 'Windows EXE v1.0.5'
+                'event_label': 'Windows EXE v1.0.6'
             });
         }
         
-        // استخدام حرف v صغير v1.0.5 المطابق لوسم GitHub المعتمد
-        const downloadUrl = "https://github.com/ehabamr062-ux/Bayan-Pos-System/releases/download/v1.0.5/Bayan.POS.Setup.1.0.5.exe";
+        // استخدام حرف v صغير v1.0.6 المطابق لوسم GitHub المعتمد
+        const downloadUrl = "https://github.com/ehabamr062-ux/Bayan-Pos-System/releases/download/v1.0.6/Bayan.POS.Setup.1.0.6.exe";
 
         // تنزيل الملف المباشر فوراً لمنع أي صفحة 404 جديدة
         window.location.href = downloadUrl;
