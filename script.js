@@ -246,7 +246,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     if (pwaModal) {
                         pwaModal.style.display = "flex";
                     } else {
-                        window.open("https://ehabamr062-ux.github.io/Bayan-Pos-System-V1.0.7/", "_blank");
+                        window.open("https://ehabamr062-ux.github.io/Bayan-Pos-System-V1.0.8/", "_blank");
                     }
                     return;
                 }
@@ -254,7 +254,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 e.preventDefault();
 
                 if (platform === 'android') {
-                    window.open("https://ehabamr062-ux.github.io/Bayan-Pos-System-V1.0.7/", "_blank");
+                    window.open("https://ehabamr062-ux.github.io/Bayan-Pos-System-V1.0.8/", "_blank");
                     return;
                 }
 
@@ -377,12 +377,12 @@ window.startDownload = function (event, platform) {
         if (typeof gtag !== 'undefined') {
             gtag('event', 'download_windows', {
                 'event_category': 'Download',
-                'event_label': 'Windows EXE v1.0.7'
+                'event_label': 'Windows EXE v1.0.8'
             });
         }
         
-        // رابط تحميل الإصدار الرسمي الأحدث v1.0.7
-        const downloadUrl = "https://github.com/ehabamr062-ux/Bayan-Pos-System/releases/download/v1.0.7/Bayan.POS.Setup.1.0.7.exe";
+        // رابط تحميل الإصدار الرسمي الأحدث v1.0.8
+        const downloadUrl = "https://github.com/ehabamr062-ux/Bayan-Pos-System/releases/download/v1.0.8/Bayan.POS.Setup.1.0.8.exe";
 
         // تنزيل الملف المباشر فوراً
         window.location.href = downloadUrl;
@@ -394,12 +394,12 @@ window.startDownload = function (event, platform) {
         if (typeof gtag !== 'undefined') {
             gtag('event', 'download_pwa', {
                 'event_category': 'Download',
-                'event_label': 'PWA Web App v1.0.7'
+                'event_label': 'PWA Web App v1.0.8'
             });
         }
         const downloadModal = document.getElementById("downloadModal");
         if (downloadModal) downloadModal.style.display = "none";
-        window.open("https://ehabamr062-ux.github.io/Bayan-Pos-System-V1.0.7/", "_blank");
+        window.open("https://ehabamr062-ux.github.io/Bayan-Pos-System-V1.0.8/", "_blank");
     }
 };
 
